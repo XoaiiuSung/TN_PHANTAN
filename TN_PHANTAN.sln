@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TN_PHANTAN", "TN_PHANTAN\TN_PHANTAN.csproj", "{968F14A8-F154-4773-BA22-0CB16892F5A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{968F14A8-F154-4773-BA22-0CB16892F5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968F14A8-F154-4773-BA22-0CB16892F5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968F14A8-F154-4773-BA22-0CB16892F5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968F14A8-F154-4773-BA22-0CB16892F5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

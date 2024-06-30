@@ -38,12 +38,16 @@
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cmbCoSo = new System.Windows.Forms.ComboBox();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(92, 12);
+            this.radioButton1.Location = new System.Drawing.Point(824, 239);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(80, 20);
             this.radioButton1.TabIndex = 0;
@@ -55,7 +59,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(265, 12);
+            this.radioButton2.Location = new System.Drawing.Point(997, 239);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(80, 20);
             this.radioButton2.TabIndex = 1;
@@ -67,7 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 48);
+            this.label1.Location = new System.Drawing.Point(744, 275);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 16);
             this.label1.TabIndex = 2;
@@ -76,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 77);
+            this.label2.Location = new System.Drawing.Point(744, 304);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 16);
             this.label2.TabIndex = 3;
@@ -85,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Location = new System.Drawing.Point(744, 331);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 16);
             this.label3.TabIndex = 4;
@@ -93,14 +97,14 @@
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(92, 74);
+            this.txtLogin.Location = new System.Drawing.Point(824, 301);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(253, 23);
             this.txtLogin.TabIndex = 6;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(92, 101);
+            this.txtPass.Location = new System.Drawing.Point(824, 328);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(253, 23);
@@ -108,7 +112,7 @@
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Location = new System.Drawing.Point(139, 130);
+            this.btnDangNhap.Location = new System.Drawing.Point(871, 357);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(100, 30);
             this.btnDangNhap.TabIndex = 8;
@@ -118,7 +122,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(245, 130);
+            this.button2.Location = new System.Drawing.Point(977, 357);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 30);
             this.button2.TabIndex = 9;
@@ -129,32 +133,55 @@
             // 
             this.cmbCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCoSo.FormattingEnabled = true;
-            this.cmbCoSo.Location = new System.Drawing.Point(92, 45);
+            this.cmbCoSo.Location = new System.Drawing.Point(824, 272);
             this.cmbCoSo.Name = "cmbCoSo";
             this.cmbCoSo.Size = new System.Drawing.Size(253, 24);
             this.cmbCoSo.TabIndex = 10;
             this.cmbCoSo.SelectedIndexChanged += new System.EventHandler(this.cmbCoSo_SelectedIndexChanged);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.textBox1);
+            this.panelControl1.Controls.Add(this.txtLogin);
+            this.panelControl1.Controls.Add(this.label3);
+            this.panelControl1.Controls.Add(this.cmbCoSo);
+            this.panelControl1.Controls.Add(this.btnDangNhap);
+            this.panelControl1.Controls.Add(this.label2);
+            this.panelControl1.Controls.Add(this.radioButton2);
+            this.panelControl1.Controls.Add(this.radioButton1);
+            this.panelControl1.Controls.Add(this.label1);
+            this.panelControl1.Controls.Add(this.txtPass);
+            this.panelControl1.Controls.Add(this.button2);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1371, 533);
+            this.panelControl1.TabIndex = 11;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.textBox1.Location = new System.Drawing.Point(646, 118);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(584, 57);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "ĐĂNG NHẬP TRẮC NGHIỆM\r\n";
+            // 
             // formDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 166);
-            this.Controls.Add(this.cmbCoSo);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnDangNhap);
-            this.Controls.Add(this.txtPass);
-            this.Controls.Add(this.txtLogin);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.ClientSize = new System.Drawing.Size(1371, 533);
+            this.Controls.Add(this.panelControl1);
             this.Name = "formDangNhap";
             this.Text = "Đăng nhập";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.formDangNhap_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -170,5 +197,7 @@
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cmbCoSo;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

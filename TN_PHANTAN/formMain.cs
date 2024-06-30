@@ -14,6 +14,7 @@ namespace TN_PHANTAN
 {
     public partial class formMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public static frpt_BangDiemMonHoc frptBangDiemMonHoc = null;
         public formMain()
         {
             InitializeComponent();
@@ -39,26 +40,26 @@ namespace TN_PHANTAN
 
         private void formMain_Load(object sender, EventArgs e)
         {
-            Form frm = this.CheckExists(typeof(formDangNhap));
-            if (frm != null) frm.Activate();
-            else
-            {
-                formDangNhap f = new formDangNhap();
-                f.MdiParent = this;
-                f.Show();
-            }
+            //Form frm = this.CheckExists(typeof(formDangNhap));
+            //if (frm != null) frm.Activate();
+            //else
+            //{
+            //    formDangNhap f = new formDangNhap();
+            //    f.MdiParent = this;
+            //    f.Show();
+            //}
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.CheckExists(typeof(formDangNhap));
-            if (frm != null) frm.Activate();
-            else
-            {
-                formDangNhap f = new formDangNhap();
-                f.MdiParent = this;
-                f.Show();
-            }
+            //Form frm = this.CheckExists(typeof(formDangNhap));
+            //if (frm != null) frm.Activate();
+            //else
+            //{
+            //    formDangNhap f = new formDangNhap();
+            //    f.MdiParent = this;
+            //    f.Show();
+            //}
         }
 
         public void HienThiMenu()
@@ -67,6 +68,30 @@ namespace TN_PHANTAN
             HOTEN.Text = "Họ tên giáo viên : " + Program.mHoten;
             NHOM.Text = "Nhóm : " + Program.mGroup;
 
+        }
+
+        private void btnBangDiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frpt_BangDiemMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frpt_BangDiemMonHoc f = new frpt_BangDiemMonHoc();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnGiangVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formGiaoVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formGiaoVien f = new formGiaoVien();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }

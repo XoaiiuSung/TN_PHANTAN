@@ -36,6 +36,8 @@ namespace TN_PHANTAN
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
         public static formMain formChinh;
+        public static formDangNhap frmDangNhap;
+        
 
         public static int KetNoi()
         {
@@ -119,8 +121,8 @@ namespace TN_PHANTAN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            formChinh = new formMain();
-            Application.Run(formChinh);
+            frmDangNhap = new formDangNhap();
+            Application.Run(frmDangNhap);
         }
     }
 }

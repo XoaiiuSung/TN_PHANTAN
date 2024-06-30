@@ -48,8 +48,8 @@ namespace TN_PHANTAN
             {
 
                 // Lấy kết danh sách phân mảnh đổ vào combobox
-                cmbCOSO.DataSource = Program.bds_dspm.DataSource;
-                cmbCOSO.DisplayMember = "TENCS";
+                cmbCOSO.DataSource = Program.bds_dspm;
+                cmbCOSO.DisplayMember = "TENCN";
                 cmbCOSO.ValueMember = "TENSERVER";
                 cmbCOSO.SelectedIndex = Program.mCoso;
             }
@@ -218,6 +218,16 @@ namespace TN_PHANTAN
                 this.BODETableAdapter.Connection.ConnectionString = Program.connstr;
                 this.BODETableAdapter.Fill(this.DS_TN_CSDLPT.BODE);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbMaKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

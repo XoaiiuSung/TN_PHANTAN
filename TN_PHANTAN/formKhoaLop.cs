@@ -14,7 +14,9 @@ namespace TN_PHANTAN
 {
     public partial class formKhoaLop : DevExpress.XtraEditors.XtraForm
     {
-        int vitri = 0;
+        private string makhoa = "";
+        private string malop = "";
+        private int vitri = 0;
         private string lastClickedTable = string.Empty;
 
         public formKhoaLop()
@@ -35,9 +37,6 @@ namespace TN_PHANTAN
 
         private void formKhoaLop_Load(object sender, EventArgs e)
         {
-            
-            
-
 
             DS_TN_CSDLPT.EnforceConstraints = false;
 
@@ -47,6 +46,14 @@ namespace TN_PHANTAN
             this.LOPTableAdapter.Fill(this.DS_TN_CSDLPT.LOP);
             this.KHOATableAdapter.Connection.ConnectionString = Program.connstr;
             this.KHOATableAdapter.Fill(this.DS_TN_CSDLPT.KHOA);
+
+            this.GIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.GIAOVIENTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN);
+
+            this.GIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString= Program.connstr;
+            this.GIAOVIEN_DANGKYTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN_DANGKY);
+            this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.SINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
 
             pcLop.Enabled = false;
             pcKhoa.Enabled = false;
@@ -62,7 +69,7 @@ namespace TN_PHANTAN
                 cmbCOSO.ValueMember = "TENSERVER";
                 cmbCOSO.SelectedIndex = Program.mCoso;
 
-                Program.MACS_now = ((DataRowView)bdsCoSo.Current)["MACS"].ToString();
+                
             }
             catch (Exception ex)
             {
@@ -78,6 +85,7 @@ namespace TN_PHANTAN
                 cmbCOSO.Enabled = false;
                 btnThem.Enabled = btnHieuChinh.Enabled = btnGhi.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = true;
             }
+            btnGhi.Enabled = btnPhucHoi.Enabled = false;
         }
 
         private void cmbCOSO_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,13 +110,19 @@ namespace TN_PHANTAN
                 this.COSOTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.COSOTableAdapter.Fill(this.DS_TN_CSDLPT.COSO);
 
-                this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.LOPTableAdapter.Fill(this.DS_TN_CSDLPT.LOP);
-
                 this.KHOATableAdapter.Connection.ConnectionString = Program.connstr;
                 this.KHOATableAdapter.Fill(this.DS_TN_CSDLPT.KHOA);
 
-                Program.MACS_now = ((DataRowView)bdsCoSo.Current)["MACS"].ToString();
+                this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.LOPTableAdapter.Fill(this.DS_TN_CSDLPT.LOP);
+               
+                this.GIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.GIAOVIENTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN);
+
+                this.GIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.GIAOVIEN_DANGKYTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN_DANGKY);
+                this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.SINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
             }
         }
 
@@ -156,23 +170,20 @@ namespace TN_PHANTAN
             if(lastClickedTable == "KHOA")
             {
                 vitri = bdsKhoa.Position;
-                
-                txtTenKhoa.Focus();
-
                 pcKhoa.Enabled = true;
                 pcLop.Enabled = false;
                 bdsKhoa.AddNew();
+                txtTenKhoa.Focus();
 
-                txtMaCS.Text = Program.MACS_now;
+                txtMaCS.Text = ((DataRowView)bdsCoSo.Current)["MACS"].ToString();
             }
             if(lastClickedTable == "LOP")
             {
-                
-                txtTenLop.Focus();
-
+                vitri = bdsLop.Position;                
                 pcKhoa.Enabled = false;
                 pcLop.Enabled = true;
                 bdsLop.AddNew();
+                txtTenLop.Focus();
 
                 txtMAKH_LOP.Text = ((DataRowView)bdsKhoa.Current)["MAKH"].ToString();
             }
@@ -197,6 +208,13 @@ namespace TN_PHANTAN
         {
             if(lastClickedTable == "KHOA")
             {
+                if (txtTenKhoa.Text.Trim() == "")
+                {
+                    MessageBox.Show("Tên khoa không được thiếu!", "", MessageBoxButtons.OK);
+                    txtTenKhoa.Focus();
+                    return;
+                }
+
                 try
                 {
 
@@ -232,6 +250,114 @@ namespace TN_PHANTAN
             
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
+
+            pcKhoa.Enabled = false;
+            pcLop.Enabled = false;
+
+            gcKhoa.Enabled = true;
+            gcLop.Enabled = true;
+        }
+
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(lastClickedTable == "KHOA")
+            {
+                if (bdsLop.Count > 0)
+                {
+                    MessageBox.Show("Không thể xóa khoa này vì đã có lớp!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (bdsGiaoVien.Count > 0)
+                {
+                    MessageBox.Show("Không thể xóa khoa này vì đã có giáo viên", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (MessageBox.Show("Bạn có thât sự muốn xóa khoa này ???", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    try
+                    {
+                        makhoa = ((DataRowView)bdsKhoa[bdsKhoa.Position])["MAKH"].ToString();
+                        bdsKhoa.RemoveCurrent();
+                        this.KHOATableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.KHOATableAdapter.Update(DS_TN_CSDLPT.KHOA);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xóa khoa. Bạn hãy xóa lại!" + ex.Message, "", MessageBoxButtons.OK);
+                        this.KHOATableAdapter.Fill(this.DS_TN_CSDLPT.KHOA);
+                        bdsKhoa.Position = bdsKhoa.Find("MAKH", makhoa);
+                        return;
+                    }
+                }
+                if (bdsKhoa.Count == 0) btnXoa.Enabled = false;
+            }
+            if (lastClickedTable == "LOP")
+            {
+                if (bdsSinhVien.Count > 0)
+                {
+                    MessageBox.Show("Không thể xóa lớp này vì đã có sinh viên!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (bds_GVDK.Count > 0)
+                {
+                    MessageBox.Show("Không thể xóa lớp này vì đã có giáo viên đăng ký", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (MessageBox.Show("Bạn có thât sự muốn xóa lớp này ???", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    try
+                    {
+                        malop = ((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString();
+                        bdsLop.RemoveCurrent();
+                        this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.LOPTableAdapter.Update(DS_TN_CSDLPT.LOP);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xóa lớp. Bạn hãy xóa lại!" + ex.Message, "", MessageBoxButtons.OK);
+                        this.LOPTableAdapter.Fill(this.DS_TN_CSDLPT.LOP);
+                        bdsKhoa.Position = bdsKhoa.Find("MALOP", malop);
+                        return;
+                    }
+                }
+                if (bdsLop.Count == 0) btnXoa.Enabled = false;
+            }
+        }
+
+        private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(lastClickedTable == "KHOA")
+            {
+                vitri = bdsKhoa.Position;
+                pcKhoa.Enabled = true;
+                gcKhoa.Enabled = false;
+                gcLop.Enabled = false;
+            }
+            if (lastClickedTable == "LOP")
+            {
+                vitri = bdsLop.Position;
+                pcLop.Enabled = true;
+                gcKhoa.Enabled = false;
+                gcLop.Enabled = false;
+            }
+
+            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+            btnGhi.Enabled = btnPhucHoi.Enabled = true;
+
+        }
+
+        private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                this.KHOATableAdapter.Fill(this.DS_TN_CSDLPT.KHOA);
+                this.LOPTableAdapter.Fill(this.DS_TN_CSDLPT.LOP);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi Reload" + ex.Message, "", MessageBoxButtons.OK);
+                return;
+            }
         }
     }
 }

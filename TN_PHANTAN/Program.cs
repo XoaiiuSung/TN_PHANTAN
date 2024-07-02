@@ -34,7 +34,6 @@ namespace TN_PHANTAN
 
         public static int mCoso = 0;
         public static string MACS_now = "";
-        public static String MAKH_now = "";
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
         public static formMain formChinh;

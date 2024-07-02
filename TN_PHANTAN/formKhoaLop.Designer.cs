@@ -82,6 +82,12 @@
             this.LOPTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.LOPTableAdapter();
             this.bdsCoSo = new System.Windows.Forms.BindingSource(this.components);
             this.COSOTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.COSOTableAdapter();
+            this.bdsGiaoVien = new System.Windows.Forms.BindingSource(this.components);
+            this.GIAOVIENTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.GIAOVIENTableAdapter();
+            this.bdsSinhVien = new System.Windows.Forms.BindingSource(this.components);
+            this.SINHVIENTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.SINHVIENTableAdapter();
+            this.bds_GVDK = new System.Windows.Forms.BindingSource(this.components);
+            this.GIAOVIEN_DANGKYTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             tENKHLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
@@ -113,6 +119,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCoSo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGiaoVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSinhVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bds_GVDK)).BeginInit();
             this.SuspendLayout();
             // 
             // tENKHLabel
@@ -163,11 +172,11 @@
             // mACSLabel
             // 
             mACSLabel.AutoSize = true;
-            mACSLabel.Location = new System.Drawing.Point(72, 120);
+            mACSLabel.Location = new System.Drawing.Point(22, 120);
             mACSLabel.Name = "mACSLabel";
-            mACSLabel.Size = new System.Drawing.Size(46, 16);
+            mACSLabel.Size = new System.Drawing.Size(72, 16);
             mACSLabel.TabIndex = 6;
-            mACSLabel.Text = "MACS:";
+            mACSLabel.Text = "MÃ CƠ SỞ:";
             // 
             // barManager1
             // 
@@ -222,6 +231,7 @@
             this.btnHieuChinh.Id = 1;
             this.btnHieuChinh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHieuChinh.ImageOptions.SvgImage")));
             this.btnHieuChinh.Name = "btnHieuChinh";
+            this.btnHieuChinh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHieuChinh_ItemClick);
             // 
             // btnGhi
             // 
@@ -237,6 +247,7 @@
             this.btnXoa.Id = 3;
             this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
             // btnPhucHoi
             // 
@@ -252,6 +263,7 @@
             this.btnReload.Id = 5;
             this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
             this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
             // 
             // btnThoat
             // 
@@ -290,7 +302,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1224, 51);
+            this.barDockControlTop.Size = new System.Drawing.Size(1316, 51);
             // 
             // barDockControlBottom
             // 
@@ -299,7 +311,7 @@
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 723);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1224, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1316, 20);
             // 
             // barDockControlLeft
             // 
@@ -314,7 +326,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1224, 51);
+            this.barDockControlRight.Location = new System.Drawing.Point(1316, 51);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 672);
@@ -327,7 +339,7 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 51);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(6);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1224, 63);
+            this.panelControl1.Size = new System.Drawing.Size(1316, 63);
             this.panelControl1.TabIndex = 5;
             // 
             // cmbCOSO
@@ -436,7 +448,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 114);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1224, 385);
+            this.panelControl2.Size = new System.Drawing.Size(1316, 385);
             this.panelControl2.TabIndex = 7;
             // 
             // gcLop
@@ -446,7 +458,7 @@
             this.gcLop.MainView = this.gridView2;
             this.gcLop.MenuManager = this.barManager1;
             this.gcLop.Name = "gcLop";
-            this.gcLop.Size = new System.Drawing.Size(603, 385);
+            this.gcLop.Size = new System.Drawing.Size(624, 385);
             this.gcLop.TabIndex = 6;
             this.gcLop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -501,7 +513,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 499);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1224, 224);
+            this.panelControl3.Size = new System.Drawing.Size(1316, 224);
             this.panelControl3.TabIndex = 8;
             // 
             // pcLop
@@ -515,7 +527,7 @@
             this.pcLop.Dock = System.Windows.Forms.DockStyle.Left;
             this.pcLop.Location = new System.Drawing.Point(621, 2);
             this.pcLop.Name = "pcLop";
-            this.pcLop.Size = new System.Drawing.Size(619, 220);
+            this.pcLop.Size = new System.Drawing.Size(624, 220);
             this.pcLop.TabIndex = 1;
             // 
             // txtMAKH_LOP
@@ -601,12 +613,39 @@
             // 
             this.COSOTableAdapter.ClearBeforeFill = true;
             // 
+            // bdsGiaoVien
+            // 
+            this.bdsGiaoVien.DataMember = "FK_GIAOVIEN_KHOA";
+            this.bdsGiaoVien.DataSource = this.bdsKhoa;
+            // 
+            // GIAOVIENTableAdapter
+            // 
+            this.GIAOVIENTableAdapter.ClearBeforeFill = true;
+            // 
+            // bdsSinhVien
+            // 
+            this.bdsSinhVien.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSinhVien.DataSource = this.bdsLop;
+            // 
+            // SINHVIENTableAdapter
+            // 
+            this.SINHVIENTableAdapter.ClearBeforeFill = true;
+            // 
+            // bds_GVDK
+            // 
+            this.bds_GVDK.DataMember = "FK_GIAOVIEN_DANGKY_LOP";
+            this.bds_GVDK.DataSource = this.bdsLop;
+            // 
+            // GIAOVIEN_DANGKYTableAdapter
+            // 
+            this.GIAOVIEN_DANGKYTableAdapter.ClearBeforeFill = true;
+            // 
             // formKhoaLop
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1224, 743);
+            this.ClientSize = new System.Drawing.Size(1316, 743);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -648,6 +687,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCoSo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGiaoVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSinhVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bds_GVDK)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -701,5 +743,11 @@
         private DevExpress.XtraEditors.TextEdit txtMaCS;
         private System.Windows.Forms.BindingSource bdsCoSo;
         private TN_CSDLPTDataSetTableAdapters.COSOTableAdapter COSOTableAdapter;
+        private System.Windows.Forms.BindingSource bdsGiaoVien;
+        private TN_CSDLPTDataSetTableAdapters.GIAOVIENTableAdapter GIAOVIENTableAdapter;
+        private System.Windows.Forms.BindingSource bdsSinhVien;
+        private TN_CSDLPTDataSetTableAdapters.SINHVIENTableAdapter SINHVIENTableAdapter;
+        private System.Windows.Forms.BindingSource bds_GVDK;
+        private TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter GIAOVIEN_DANGKYTableAdapter;
     }
 }

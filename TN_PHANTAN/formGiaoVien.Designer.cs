@@ -42,7 +42,6 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhucHoi = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInDS = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -149,7 +148,6 @@
             this.btnXoa,
             this.btnPhucHoi,
             this.btnReload,
-            this.btnInDS,
             this.btnThoat});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 8;
@@ -168,7 +166,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPhucHoi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnInDS, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -219,13 +216,6 @@
             this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
             this.btnReload.Name = "btnReload";
             this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Caption = "In danh sách giáo viên";
-            this.btnInDS.Id = 6;
-            this.btnInDS.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnInDS.ImageOptions.SvgImage")));
-            this.btnInDS.Name = "btnInDS";
             // 
             // btnThoat
             // 
@@ -298,16 +288,16 @@
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 51);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(6);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1339, 94);
+            this.panelControl1.Size = new System.Drawing.Size(1339, 63);
             this.panelControl1.TabIndex = 4;
             // 
             // cmbCOSO
             // 
             this.cmbCOSO.FormattingEnabled = true;
             this.cmbCOSO.Location = new System.Drawing.Point(126, 18);
-            this.cmbCOSO.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbCOSO.Margin = new System.Windows.Forms.Padding(6);
             this.cmbCOSO.Name = "cmbCOSO";
             this.cmbCOSO.Size = new System.Drawing.Size(679, 24);
             this.cmbCOSO.TabIndex = 1;
@@ -322,7 +312,6 @@
             this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "CƠ SỞ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // DS_TN_CSDLPT
             // 
@@ -356,10 +345,10 @@
             // 
             this.gcGiaoVien.DataSource = this.bdsGIAOVIEN;
             this.gcGiaoVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcGiaoVien.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.gcGiaoVien.Location = new System.Drawing.Point(0, 145);
+            this.gcGiaoVien.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gcGiaoVien.Location = new System.Drawing.Point(0, 114);
             this.gcGiaoVien.MainView = this.gridView1;
-            this.gcGiaoVien.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gcGiaoVien.Margin = new System.Windows.Forms.Padding(6);
             this.gcGiaoVien.MenuManager = this.barManager1;
             this.gcGiaoVien.Name = "gcGiaoVien";
             this.gcGiaoVien.Size = new System.Drawing.Size(1339, 166);
@@ -436,10 +425,10 @@
             this.pcGiaoVien.Controls.Add(mAGVLabel);
             this.pcGiaoVien.Controls.Add(this.txtMAGV);
             this.pcGiaoVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcGiaoVien.Location = new System.Drawing.Point(0, 311);
-            this.pcGiaoVien.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pcGiaoVien.Location = new System.Drawing.Point(0, 280);
+            this.pcGiaoVien.Margin = new System.Windows.Forms.Padding(6);
             this.pcGiaoVien.Name = "pcGiaoVien";
-            this.pcGiaoVien.Size = new System.Drawing.Size(1339, 270);
+            this.pcGiaoVien.Size = new System.Drawing.Size(1339, 301);
             this.pcGiaoVien.TabIndex = 7;
             // 
             // cmbMaKhoa
@@ -447,7 +436,7 @@
             this.cmbMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsGIAOVIEN, "MAKH", true));
             this.cmbMaKhoa.FormattingEnabled = true;
             this.cmbMaKhoa.Location = new System.Drawing.Point(181, 111);
-            this.cmbMaKhoa.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cmbMaKhoa.Margin = new System.Windows.Forms.Padding(5);
             this.cmbMaKhoa.Name = "cmbMaKhoa";
             this.cmbMaKhoa.Size = new System.Drawing.Size(585, 24);
             this.cmbMaKhoa.TabIndex = 11;
@@ -457,7 +446,7 @@
             // 
             this.txtDIACHI.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsGIAOVIEN, "DIACHI", true));
             this.txtDIACHI.Location = new System.Drawing.Point(181, 175);
-            this.txtDIACHI.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtDIACHI.Margin = new System.Windows.Forms.Padding(6);
             this.txtDIACHI.Name = "txtDIACHI";
             this.txtDIACHI.Size = new System.Drawing.Size(1324, 23);
             this.txtDIACHI.TabIndex = 7;
@@ -466,7 +455,7 @@
             // 
             this.txtTEN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsGIAOVIEN, "TEN", true));
             this.txtTEN.Location = new System.Drawing.Point(1310, 48);
-            this.txtTEN.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTEN.Margin = new System.Windows.Forms.Padding(6);
             this.txtTEN.Name = "txtTEN";
             this.txtTEN.Size = new System.Drawing.Size(196, 23);
             this.txtTEN.TabIndex = 5;
@@ -475,7 +464,7 @@
             // 
             this.txtHO.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsGIAOVIEN, "HO", true));
             this.txtHO.Location = new System.Drawing.Point(922, 48);
-            this.txtHO.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtHO.Margin = new System.Windows.Forms.Padding(6);
             this.txtHO.Name = "txtHO";
             this.txtHO.Size = new System.Drawing.Size(373, 23);
             this.txtHO.TabIndex = 3;
@@ -484,7 +473,7 @@
             // 
             this.txtMAGV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsGIAOVIEN, "MAGV", true));
             this.txtMAGV.Location = new System.Drawing.Point(181, 48);
-            this.txtMAGV.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtMAGV.Margin = new System.Windows.Forms.Padding(6);
             this.txtMAGV.Name = "txtMAGV";
             this.txtMAGV.Size = new System.Drawing.Size(585, 23);
             this.txtMAGV.TabIndex = 1;
@@ -559,7 +548,6 @@
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnPhucHoi;
         private DevExpress.XtraBars.BarButtonItem btnReload;
-        private DevExpress.XtraBars.BarButtonItem btnInDS;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.ComboBox cmbCOSO;

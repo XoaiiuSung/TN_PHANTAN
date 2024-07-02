@@ -44,17 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbLanThi = new System.Windows.Forms.ComboBox();
             this.btnReview = new DevExpress.XtraEditors.SimpleButton();
-            this.sINHVIENTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.SINHVIENTableAdapter();
-            this.bANGDIEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bANGDIEMTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter();
-            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
             tENLOPLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DS_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bANGDIEMBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tENLOPLabel
@@ -188,30 +182,12 @@
             // btnReview
             // 
             this.btnReview.Location = new System.Drawing.Point(558, 226);
-            this.btnReview.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnReview.Margin = new System.Windows.Forms.Padding(6);
             this.btnReview.Name = "btnReview";
             this.btnReview.Size = new System.Drawing.Size(148, 45);
             this.btnReview.TabIndex = 9;
             this.btnReview.Text = "Preview";
             this.btnReview.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // sINHVIENTableAdapter
-            // 
-            this.sINHVIENTableAdapter.ClearBeforeFill = true;
-            // 
-            // bANGDIEMBindingSource
-            // 
-            this.bANGDIEMBindingSource.DataMember = "BANGDIEM";
-            this.bANGDIEMBindingSource.DataSource = this.DS_TN_CSDLPT;
-            // 
-            // bANGDIEMTableAdapter
-            // 
-            this.bANGDIEMTableAdapter.ClearBeforeFill = true;
-            // 
-            // sINHVIENBindingSource
-            // 
-            this.sINHVIENBindingSource.DataMember = "SINHVIEN";
-            this.sINHVIENBindingSource.DataSource = this.DS_TN_CSDLPT;
             // 
             // frpt_BangDiemMonHoc
             // 
@@ -236,8 +212,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DS_TN_CSDLPT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bANGDIEMBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,9 +232,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbLanThi;
         private DevExpress.XtraEditors.SimpleButton btnReview;
-        private TN_CSDLPTDataSetTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
-        private System.Windows.Forms.BindingSource bANGDIEMBindingSource;
-        private TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter bANGDIEMTableAdapter;
-        private System.Windows.Forms.BindingSource sINHVIENBindingSource;
     }
 }

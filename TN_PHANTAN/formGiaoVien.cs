@@ -75,7 +75,7 @@ namespace TN_PHANTAN
             pcGiaoVien.Enabled = true;
             bdsGIAOVIEN.AddNew();
 
-            btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnInDS.Enabled = btnXoa.Enabled = btnThoat.Enabled = false;
+            btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnXoa.Enabled = btnThoat.Enabled = false;
             btnPhucHoi.Enabled = btnGhi.Enabled = true;
             gcGiaoVien.Enabled = false;
         }
@@ -87,7 +87,7 @@ namespace TN_PHANTAN
             gcGiaoVien.Enabled = true;
             pcGiaoVien.Enabled = false;
 
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnInDS.Enabled = btnThoat.Enabled = true;
+            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
         }
 
@@ -95,7 +95,7 @@ namespace TN_PHANTAN
         {
             vitri = bdsGIAOVIEN.Position;
             pcGiaoVien.Enabled = true;
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnInDS.Enabled = btnThoat.Enabled = false;
+            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
             gcGiaoVien .Enabled = false;
         }
@@ -184,7 +184,7 @@ namespace TN_PHANTAN
                 return;
             }
             gcGiaoVien.Enabled = true;
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnInDS.Enabled = btnThoat.Enabled = true;
+            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
             pcGiaoVien.Enabled = false;
 
@@ -218,11 +218,6 @@ namespace TN_PHANTAN
                 this.BODETableAdapter.Connection.ConnectionString = Program.connstr;
                 this.BODETableAdapter.Fill(this.DS_TN_CSDLPT.BODE);
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void cmbMaKhoa_SelectedIndexChanged(object sender, EventArgs e)

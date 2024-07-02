@@ -55,14 +55,6 @@ namespace TN_PHANTAN
                 cmbLop.DisplayMember = "TENLOP";
                 cmbLop.ValueMember = "MALOP";
 
-                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
-
-                
-
-                this.bANGDIEMTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.bANGDIEMTableAdapter.Fill(this.DS_TN_CSDLPT.BANGDIEM);
-
                 cmbLop.SelectedIndex = 0;
                 malop = cmbLop.SelectedValue.ToString();
 
@@ -99,14 +91,6 @@ namespace TN_PHANTAN
             cmbLop.DataSource = this.DS_TN_CSDLPT.LOP;
             cmbLop.DisplayMember = "TENLOP";
             cmbLop.ValueMember = "MALOP";
-
-            this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.sINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
-
-            
-
-            this.bANGDIEMTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.bANGDIEMTableAdapter.Fill(this.DS_TN_CSDLPT.BANGDIEM);
 
             cmbCOSO.DataSource = Program.bds_dspm;
             cmbCOSO.DisplayMember = "TENCN";

@@ -33,11 +33,16 @@ namespace TN_PHANTAN
         public static String mHoten = "";
 
         public static int mCoso = 0;
+        public static string MACS_now = "";
+        public static String MAKH_now = "";
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
         public static formMain formChinh;
         public static formDangNhap frmDangNhap;
-        
+
+
+        //subform
+        public static string malopduocchon = "";
 
         public static int KetNoi()
         {

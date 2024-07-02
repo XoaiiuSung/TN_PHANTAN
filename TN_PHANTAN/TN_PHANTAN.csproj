@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS_NhapSinhVien.cs">
+      <DependentUpon>DS_NhapSinhVien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_TN_CSDLPT.cs">
+      <DependentUpon>DS_TN_CSDLPT.xsd</DependentUpon>
+    </Compile>
     <Compile Include="formDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,11 +88,23 @@
     <Compile Include="formGiaoVien.Designer.cs">
       <DependentUpon>formGiaoVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="formKhoaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formKhoaLop.Designer.cs">
+      <DependentUpon>formKhoaLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="formMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formMain.Designer.cs">
       <DependentUpon>formMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSinhVien.Designer.cs">
+      <DependentUpon>formSinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="frpt_BangDiemMonHoc.cs">
       <SubType>Form</SubType>
@@ -101,6 +119,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_TN_CSDLPT.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_NhapSinhVien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_NhapSinhVien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="subform\fomchonlop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subform\fomchonlop.Designer.cs">
+      <DependentUpon>fomchonlop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xrpt_BangDiemMonHoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -113,8 +142,14 @@
     <EmbeddedResource Include="formGiaoVien.resx">
       <DependentUpon>formGiaoVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formKhoaLop.resx">
+      <DependentUpon>formKhoaLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formMain.resx">
       <DependentUpon>formMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSinhVien.resx">
+      <DependentUpon>formSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frpt_BangDiemMonHoc.resx">
       <DependentUpon>frpt_BangDiemMonHoc.cs</DependentUpon>
@@ -129,6 +164,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="subform\fomchonlop.resx">
+      <DependentUpon>fomchonlop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xrpt_BangDiemMonHoc.resx">
       <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +190,17 @@
     </None>
     <None Include="DS_TN_CSDLPT.xss">
       <DependentUpon>DS_TN_CSDLPT.xsd</DependentUpon>
+    </None>
+    <None Include="DS_NhapSinhVien.xsc">
+      <DependentUpon>DS_NhapSinhVien.xsd</DependentUpon>
+    </None>
+    <None Include="DS_NhapSinhVien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_NhapSinhVien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_NhapSinhVien.xss">
+      <DependentUpon>DS_NhapSinhVien.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

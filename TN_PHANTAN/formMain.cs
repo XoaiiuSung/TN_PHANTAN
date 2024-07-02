@@ -52,14 +52,14 @@ namespace TN_PHANTAN
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //Form frm = this.CheckExists(typeof(formDangNhap));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    formDangNhap f = new formDangNhap();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
+            Form frm = this.CheckExists(typeof(formKhoaLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formKhoaLop f = new formKhoaLop();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         public void HienThiMenu()
@@ -89,6 +89,18 @@ namespace TN_PHANTAN
             else
             {
                 formGiaoVien f = new formGiaoVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnSinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formSinhVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formSinhVien f = new formSinhVien();
                 f.MdiParent = this;
                 f.Show();
             }

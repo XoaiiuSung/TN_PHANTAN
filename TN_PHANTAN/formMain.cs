@@ -105,5 +105,40 @@ namespace TN_PHANTAN
                 f.Show();
             }
         }
+
+        private void btnMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formMonHoc f = new formMonHoc();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
+            Program.mlogin = "";
+            Program.password = "";
+            
+            Program.frmDangNhap = new formDangNhap();
+            this.Hide();
+            Program.frmDangNhap.ShowDialog();
+            this.Close();
+        }
+
+        private void btnThoatMain_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát chương trình", "", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        
     }
 }

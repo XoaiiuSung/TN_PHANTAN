@@ -99,11 +99,12 @@ namespace TN_PHANTAN
             Program.mGroup = Program.myReader.GetString(2);
             Program.myReader.Close();
             Program.conn.Close();
-
+            
             Program.formChinh = new formMain();
             Program.formChinh.MAGV.Text = "Mã giáo viên: " + Program.username;
             Program.formChinh.HOTEN.Text = "Họ tên: " + Program.mHoten;
             Program.formChinh.NHOM.Text = "Nhóm: " + Program.mGroup;
+            this.Hide();
             Program.formChinh.ShowDialog();
             this.Close();
             //Program.formChinh.HienThiMenu();
@@ -122,6 +123,15 @@ namespace TN_PHANTAN
         private void cmbCoSo_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.servername = cmbCoSo.SelectedValue.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát chương trình", "", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                Application.ExitThread();
+            }
         }
     }
 }

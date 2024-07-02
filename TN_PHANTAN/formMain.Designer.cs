@@ -34,7 +34,7 @@
             this.btnKhoaLop = new DevExpress.XtraBars.BarButtonItem();
             this.btnTaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThoatMain = new DevExpress.XtraBars.BarButtonItem();
             this.btnXemKetQua = new DevExpress.XtraBars.BarButtonItem();
             this.btnBangDiem = new DevExpress.XtraBars.BarButtonItem();
             this.btnDanhSachDKT = new DevExpress.XtraBars.BarButtonItem();
@@ -80,7 +80,7 @@
             this.btnKhoaLop,
             this.btnTaoTaiKhoan,
             this.btnDangXuat,
-            this.barButtonItem2,
+            this.btnThoatMain,
             this.btnXemKetQua,
             this.btnBangDiem,
             this.btnDanhSachDKT,
@@ -123,13 +123,15 @@
             this.btnDangXuat.Id = 3;
             this.btnDangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangXuat.ImageOptions.SvgImage")));
             this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangXuat_ItemClick);
             // 
-            // barButtonItem2
+            // btnThoatMain
             // 
-            this.barButtonItem2.Caption = "Thoát";
-            this.barButtonItem2.Id = 4;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnThoatMain.Caption = "Thoát";
+            this.btnThoatMain.Id = 4;
+            this.btnThoatMain.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.btnThoatMain.Name = "btnThoatMain";
+            this.btnThoatMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoatMain_ItemClick);
             // 
             // btnXemKetQua
             // 
@@ -167,6 +169,7 @@
             this.btnMonHoc.Id = 9;
             this.btnMonHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnMonHoc.ImageOptions.SvgImage")));
             this.btnMonHoc.Name = "btnMonHoc";
+            this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
             // 
             // btnGiangVien
             // 
@@ -290,7 +293,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.ItemLinks.Add(this.barButtonItem2);
+            this.btnThoat.ItemLinks.Add(this.btnThoatMain);
             this.btnThoat.Name = "btnThoat";
             // 
             // xtraTabbedMdiManager1
@@ -368,7 +371,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btnDangXuat;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem btnThoatMain;
         private DevExpress.XtraBars.BarButtonItem btnXemKetQua;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup btnThoat;

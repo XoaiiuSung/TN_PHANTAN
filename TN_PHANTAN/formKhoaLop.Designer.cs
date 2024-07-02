@@ -413,9 +413,11 @@
             this.gridView1.GridControl = this.gcKhoa;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
             // 
             // colMAKH
             // 
+            this.colMAKH.Caption = "MÃ KHOA";
             this.colMAKH.FieldName = "MAKH";
             this.colMAKH.MinWidth = 25;
             this.colMAKH.Name = "colMAKH";
@@ -425,6 +427,7 @@
             // 
             // colTENKH
             // 
+            this.colTENKH.Caption = "TÊN KHOA";
             this.colTENKH.FieldName = "TENKH";
             this.colTENKH.MinWidth = 25;
             this.colTENKH.Name = "colTENKH";
@@ -434,6 +437,7 @@
             // 
             // colMACS
             // 
+            this.colMACS.Caption = "MÃ CƠ SỞ";
             this.colMACS.FieldName = "MACS";
             this.colMACS.MinWidth = 25;
             this.colMACS.Name = "colMACS";
@@ -478,9 +482,11 @@
             this.gridView2.GridControl = this.gcLop;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsDetail.EnableMasterViewMode = false;
             // 
             // colMALOP
             // 
+            this.colMALOP.Caption = "MÃ LỚP";
             this.colMALOP.FieldName = "MALOP";
             this.colMALOP.MinWidth = 25;
             this.colMALOP.Name = "colMALOP";
@@ -490,6 +496,7 @@
             // 
             // colTENLOP
             // 
+            this.colTENLOP.Caption = "TÊN LỚP";
             this.colTENLOP.FieldName = "TENLOP";
             this.colTENLOP.MinWidth = 25;
             this.colTENLOP.Name = "colTENLOP";
@@ -499,6 +506,7 @@
             // 
             // colMAKH1
             // 
+            this.colMAKH1.Caption = "MÃ KHOA";
             this.colMAKH1.FieldName = "MAKH";
             this.colMAKH1.MinWidth = 25;
             this.colMAKH1.Name = "colMAKH1";

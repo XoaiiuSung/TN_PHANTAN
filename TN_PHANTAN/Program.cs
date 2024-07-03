@@ -121,6 +121,24 @@ namespace TN_PHANTAN
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }
         }
+        public static int ExceSqlNoneQuery(string str)
+        {
+
+            SqlCommand sqlCmd = new SqlCommand(str, Program.conn);
+            sqlCmd.CommandType = CommandType.Text;
+            sqlCmd.CommandTimeout = 600;// 10 phut 
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            try
+            {
+                sqlCmd.ExecuteNonQuery(); conn.Close();
+                return 0;
+            }
+            catch (SqlException ex)
+            {
+                conn.Close();
+                return -1;
+            }
+        }
         [STAThread]
         static void Main()
         {

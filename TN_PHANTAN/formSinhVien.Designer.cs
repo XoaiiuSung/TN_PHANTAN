@@ -33,8 +33,8 @@
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label hOLabel;
             System.Windows.Forms.Label mASVLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSinhVien));
             System.Windows.Forms.Label nGAYSINHLabel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSinhVien));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -68,13 +68,13 @@
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pcSinhVien = new DevExpress.XtraEditors.PanelControl();
+            this.txtMASV = new System.Windows.Forms.TextBox();
+            this.txtNgaySinh = new DevExpress.XtraEditors.DateEdit();
             this.btnChonLop = new System.Windows.Forms.Button();
             this.txtMALOP = new System.Windows.Forms.TextBox();
             this.txtDIaChi = new System.Windows.Forms.TextBox();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtHo = new System.Windows.Forms.TextBox();
-            this.txtNgaySinh = new DevExpress.XtraEditors.DateEdit();
-            this.txtMASV = new System.Windows.Forms.TextBox();
             mALOPLabel = new System.Windows.Forms.Label();
             dIACHILabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
@@ -129,6 +129,15 @@
             mASVLabel.Size = new System.Drawing.Size(87, 16);
             mASVLabel.TabIndex = 24;
             mASVLabel.Text = "Mã Sinh Viên:";
+            // 
+            // nGAYSINHLabel1
+            // 
+            nGAYSINHLabel1.AutoSize = true;
+            nGAYSINHLabel1.Location = new System.Drawing.Point(143, 79);
+            nGAYSINHLabel1.Name = "nGAYSINHLabel1";
+            nGAYSINHLabel1.Size = new System.Drawing.Size(67, 16);
+            nGAYSINHLabel1.TabIndex = 36;
+            nGAYSINHLabel1.Text = "Ngày sinh:";
             // 
             // barManager1
             // 
@@ -409,6 +418,8 @@
             // 
             // colNGAYSINH
             // 
+            this.colNGAYSINH.DisplayFormat.FormatString = "dd-MM-yyyy";
+            this.colNGAYSINH.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.MinWidth = 25;
             this.colNGAYSINH.Name = "colNGAYSINH";
@@ -454,6 +465,33 @@
             this.pcSinhVien.Size = new System.Drawing.Size(1336, 217);
             this.pcSinhVien.TabIndex = 28;
             // 
+            // txtMASV
+            // 
+            this.txtMASV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSinhVien, "MASV", true));
+            this.txtMASV.Location = new System.Drawing.Point(303, 30);
+            this.txtMASV.Name = "txtMASV";
+            this.txtMASV.Size = new System.Drawing.Size(200, 23);
+            this.txtMASV.TabIndex = 38;
+            // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "NGAYSINH", true));
+            this.txtNgaySinh.EditValue = null;
+            this.txtNgaySinh.Location = new System.Drawing.Point(303, 76);
+            this.txtNgaySinh.MenuManager = this.barManager1;
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.txtNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNgaySinh.Properties.DisplayFormat.FormatString = "dd-MM-yyyy";
+            this.txtNgaySinh.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtNgaySinh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txtNgaySinh.Properties.UseMaskAsDisplayFormat = true;
+            this.txtNgaySinh.Size = new System.Drawing.Size(200, 22);
+            this.txtNgaySinh.TabIndex = 37;
+            // 
             // btnChonLop
             // 
             this.btnChonLop.Location = new System.Drawing.Point(574, 158);
@@ -496,40 +534,6 @@
             this.txtHo.Name = "txtHo";
             this.txtHo.Size = new System.Drawing.Size(403, 23);
             this.txtHo.TabIndex = 27;
-            // 
-            // nGAYSINHLabel1
-            // 
-            nGAYSINHLabel1.AutoSize = true;
-            nGAYSINHLabel1.Location = new System.Drawing.Point(143, 79);
-            nGAYSINHLabel1.Name = "nGAYSINHLabel1";
-            nGAYSINHLabel1.Size = new System.Drawing.Size(67, 16);
-            nGAYSINHLabel1.TabIndex = 36;
-            nGAYSINHLabel1.Text = "Ngày sinh:";
-            // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "NGAYSINH", true));
-            this.txtNgaySinh.EditValue = null;
-            this.txtNgaySinh.Location = new System.Drawing.Point(303, 76);
-            this.txtNgaySinh.MenuManager = this.barManager1;
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.txtNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNgaySinh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txtNgaySinh.Properties.UseMaskAsDisplayFormat = true;
-            this.txtNgaySinh.Size = new System.Drawing.Size(200, 22);
-            this.txtNgaySinh.TabIndex = 37;
-            // 
-            // txtMASV
-            // 
-            this.txtMASV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSinhVien, "MASV", true));
-            this.txtMASV.Location = new System.Drawing.Point(303, 30);
-            this.txtMASV.Name = "txtMASV";
-            this.txtMASV.Size = new System.Drawing.Size(200, 23);
-            this.txtMASV.TabIndex = 38;
             // 
             // formSinhVien
             // 

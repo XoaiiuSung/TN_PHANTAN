@@ -105,7 +105,7 @@ namespace TN_PHANTAN
             gcSinhVien.Enabled = false;
             checkThem = true;
             
-            txtNgaySinh.EditValue = DateTime.Now.ToString("MM/dd/yyyy");
+            txtNgaySinh.EditValue = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -180,7 +180,7 @@ namespace TN_PHANTAN
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi ghi môn học! \n" + ex.Message, "", MessageBoxButtons.OK);
+                        MessageBox.Show("Lỗi ghi sinh viên! \n" + ex.Message, "", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -230,7 +230,7 @@ namespace TN_PHANTAN
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi ghi môn học! \n" + ex.Message, "", MessageBoxButtons.OK);
+                        MessageBox.Show("Lỗi ghi sinh viên! \n" + ex.Message, "", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -277,7 +277,6 @@ namespace TN_PHANTAN
             pcSinhVien.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
             checkThem = false;
             if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
         }
@@ -306,7 +305,7 @@ namespace TN_PHANTAN
 
         private void btnChonLop_Click(object sender, EventArgs e)
         {
-            fomchonlop frm = new fomchonlop();
+            sformChonLop frm = new sformChonLop();
             frm.ShowDialog();
             this.txtMALOP.Text = Program.malopduocchon;
         }

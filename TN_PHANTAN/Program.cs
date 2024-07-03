@@ -42,6 +42,7 @@ namespace TN_PHANTAN
 
         //subform
         public static string malopduocchon = "";
+        public static string makhoaduocchon = "";
 
         public static int KetNoi()
         {

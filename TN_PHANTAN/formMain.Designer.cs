@@ -104,7 +104,7 @@
             // 
             // btnKhoaLop
             // 
-            this.btnKhoaLop.Caption = "KhoaLop";
+            this.btnKhoaLop.Caption = "Khoa_Lớp";
             this.btnKhoaLop.Id = 1;
             this.btnKhoaLop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKhoaLop.ImageOptions.SvgImage")));
             this.btnKhoaLop.Name = "btnKhoaLop";
@@ -129,7 +129,7 @@
             // 
             this.btnThoatMain.Caption = "Thoát";
             this.btnThoatMain.Id = 4;
-            this.btnThoatMain.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.btnThoatMain.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoatMain.ImageOptions.SvgImage")));
             this.btnThoatMain.Name = "btnThoatMain";
             this.btnThoatMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoatMain_ItemClick);
             // 

@@ -236,7 +236,7 @@ namespace TN_PHANTAN
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xóa khoa. Bạn hãy xóa lại!" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi xóa môn học. Bạn hãy xóa lại!" + ex.Message, "", MessageBoxButtons.OK);
                     this.MONHOCTableAdapter.Fill(this.DS_TN_CSDLPT.MONHOC);
                     bdsMonHoc.Position = bdsMonHoc.Find("MAMH", mamh);
                     return;

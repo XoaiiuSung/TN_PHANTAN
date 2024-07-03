@@ -86,6 +86,7 @@ namespace TN_PHANTAN
                 cmbCOSO.Enabled = false;
                 btnThem.Enabled = btnHieuChinh.Enabled = btnGhi.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = true;
             }
+            if (bdsLop.Count == 0) btnXoa.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
         }
 
@@ -138,18 +139,6 @@ namespace TN_PHANTAN
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (lastClickedTable == "KHOA")
-            {
-                bdsKhoa.CancelEdit();
-                if (btnThem.Enabled == false) bdsKhoa.Position = vitri;
-
-                
-            }
-            if (lastClickedTable == "LOP")
-            {
-                bdsLop.CancelEdit();
-                if (btnThem.Enabled == false) bdsLop.Position = vitri;
-            }
             gcKhoa.Enabled = true;
             gcLop.Enabled = true;
 
@@ -159,7 +148,25 @@ namespace TN_PHANTAN
 
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
+
             checkthem = false;
+
+            if (lastClickedTable == "KHOA")
+            {
+                bdsKhoa.CancelEdit();
+                if (btnThem.Enabled == false) bdsKhoa.Position = vitri;
+                if (bdsKhoa.Count == 0) btnXoa.Enabled = false;
+
+
+            }
+            if (lastClickedTable == "LOP")
+            {
+                bdsLop.CancelEdit();
+                if (btnThem.Enabled == false) bdsLop.Position = vitri;
+                if (bdsLop.Count == 0) btnXoa.Enabled = false;
+
+            }
+            
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -195,11 +202,15 @@ namespace TN_PHANTAN
         private void gcKhoa_Click(object sender, EventArgs e)
         {
             lastClickedTable = "KHOA";
+            if (bdsKhoa.Count == 0) btnXoa.Enabled = false;
+            else btnXoa.Enabled = true;
         }
 
         private void gcLop_Click(object sender, EventArgs e)
         {
             lastClickedTable = "LOP";
+            if (bdsLop.Count == 0) btnXoa.Enabled = false;
+            else btnXoa.Enabled = true;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

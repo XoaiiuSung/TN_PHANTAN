@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,10 @@ namespace TN_PHANTAN
     {
         private int vitri = 0;
         private string masv = "";
-        private Boolean checkThem = false;
+
+        Stack undoList = new Stack();
+        private Boolean dangthem = false;
+        private Boolean dangsua = false;
         public formSinhVien()
         {
             InitializeComponent();
@@ -93,6 +97,47 @@ namespace TN_PHANTAN
             }
         }
 
+        private Boolean KiemTraLoiInput()
+        {
+            if (txtMASV.Text.Trim() == "")
+            {
+                MessageBox.Show("Mã sinh viên không được thiếu!", "", MessageBoxButtons.OK);
+                txtMASV.Focus();
+                return false;
+            }
+            if (txtHo.Text.Trim() == "")
+            {
+                MessageBox.Show("Họ sinh viên không được thiếu!", "", MessageBoxButtons.OK);
+                txtHo.Focus();
+                return false;
+            }
+            if (txtTen.Text.Trim() == "")
+            {
+                MessageBox.Show("Tên sinh viên không được thiếu!", "", MessageBoxButtons.OK);
+                txtHo.Focus();
+                return false;
+            }
+            if (txtNgaySinh.DateTime > DateTime.Now)
+            {
+                MessageBox.Show("Ngày sinh không được lớn hơn ngày hiện tại!", "", MessageBoxButtons.OK);
+                txtNgaySinh.Focus();
+                return false;
+            }
+            if (txtDiaChi.Text.Trim() == "")
+            {
+                MessageBox.Show("Địa chỉ sinh viên không được thiếu!", "", MessageBoxButtons.OK);
+                txtHo.Focus();
+                return false;
+            }
+            if (txtMALOP.Text.Trim() == "")
+            {
+                MessageBox.Show("Mã lớp sinh viên không được thiếu!", "", MessageBoxButtons.OK);
+                btnChonLop.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             vitri = bdsSinhVien.Position;
@@ -103,7 +148,7 @@ namespace TN_PHANTAN
             btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnXoa.Enabled = btnThoat.Enabled = false;
             btnPhucHoi.Enabled = btnGhi.Enabled = true;
             gcSinhVien.Enabled = false;
-            checkThem = true;
+            dangthem = true;
             
             txtNgaySinh.EditValue = DateTime.Now.ToString("dd/MM/yyyy");
         }
@@ -113,120 +158,91 @@ namespace TN_PHANTAN
             vitri = bdsSinhVien.Position;
             pcSinhVien.Enabled = true;
             gcSinhVien.Enabled = false;
+            txtMASV.Enabled = false;
 
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
-
-            
+            dangsua = true;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (checkThem == true)
+            if (!KiemTraLoiInput())
             {
-                if (txtMASV.Text.Trim() == "")
-                {
-                    MessageBox.Show("Mã sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtMASV.Focus();
-                    return;
-                }
-                if (txtHo.Text.Trim() == "")
-                {
-                    MessageBox.Show("Họ sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtHo.Focus();
-                    return;
-                }
-                if (txtTen.Text.Trim() == "")
-                {
-                    MessageBox.Show("Tên sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtHo.Focus();
-                    return;
-                }
-                if(txtNgaySinh.DateTime > DateTime.Now)
-                {
-                    MessageBox.Show("Ngày sinh không được lớn hơn ngày hiện tại!", "", MessageBoxButtons.OK);
-                    txtNgaySinh.Focus();
-                    return;
-                }
-                if (txtDIaChi.Text.Trim() == "")
-                {
-                    MessageBox.Show("Địa chỉ sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtHo.Focus();
-                    return;
-                }
-                if (txtMALOP.Text.Trim() == "")
-                {
-                    MessageBox.Show("Mã lớp sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    btnChonLop.Focus();
-                    return;
-                }
-                String sql = "EXEC SP_KT_SINHVIEN_TONTAI '" + txtMASV.Text.Trim() + "'";
-
-                int kq = Program.ExecSqlNonQuery(sql);
-                if (kq == 1)
-                {
-                    txtMASV.Focus();
-                    return;
-                }
-                else
-                {
-                    try
-                    {
-
-                        bdsSinhVien.EndEdit();
-                        bdsSinhVien.ResetCurrentItem();
-                        this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-                        this.SINHVIENTableAdapter.Update(this.DS_TN_CSDLPT.SINHVIEN);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi ghi sinh viên! \n" + ex.Message, "", MessageBoxButtons.OK);
-                        return;
-                    }
-                }
-                checkThem = false;
+                return;
             }
-            else
+
+            DataRowView sv = (DataRowView)bdsSinhVien[bdsSinhVien.Position];
+            string masinhvien = "";
+            string ho = "";
+            string ten = "";
+            DateTime ngaysinh;
+            string diachi = "";
+            string malop = "";
+
+            String sql = "";
+            int kq = 0;
+
+            if (dangthem)
             {
-                if (txtMASV.Text.Trim() == "")
+                sql = "EXEC SP_KT_SINHVIEN_TONTAI '" + txtMASV.Text.Trim() + "'";
+                kq = Program.ExecSqlNonQuery(sql);
+            }
+            if (kq == 1)
+            {
+                txtMASV.Focus();
+                return;
+            }
+            if (dangthem || dangsua)
+            {
+                DialogResult dr = MessageBox.Show("Bạn có chắc muốn GHI dữ liệu vào cơ sở dữ liệu ?", "Thông báo",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
                 {
-                    MessageBox.Show("Mã sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtMASV.Focus();
-                    return;
-                }
-                if (txtHo.Text.Trim() == "")
-                {
-                    MessageBox.Show("Họ sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtHo.Focus();
-                    return;
-                }
-                if (txtTen.Text.Trim() == "")
-                {
-                    MessageBox.Show("Tên sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtHo.Focus();
-                    return;
-                }
-                if (txtNgaySinh.DateTime > DateTime.Now)
-                {
-                    MessageBox.Show("Ngày sinh không được lớn hơn ngày hiện tại!", "", MessageBoxButtons.OK);
-                    txtNgaySinh.Focus();
-                    return;
-                }
-                if (txtDIaChi.Text.Trim() == "")
-                {
-                    MessageBox.Show("Địa chỉ sinh viên không được thiếu!", "", MessageBoxButtons.OK);
-                    txtHo.Focus();
-                    return;
-                }
-                else
-                {
+                    string CauTruyVanHoanTac = "";
                     try
                     {
+                        if (dangthem)
+                        {
+                            CauTruyVanHoanTac = "" +
+                                "DELETE DBO.SINHVIEN " +
+                                "WHERE MASV = '" + txtMASV.Text.Trim() + "'";
+                        }
+                        if (dangsua)
+                        {
+                            masinhvien = sv["MASV"].ToString().Trim();
+                            ho = sv["HO"].ToString();
+                            ten = sv["TEN"].ToString();
+                            ngaysinh = Convert.ToDateTime(sv["NGAYSINH"]);
+                            string ngaysinhFormatted = ngaysinh.ToString("yyyy-MM-dd");
+                            diachi = sv["DIACHI"].ToString();
+                            malop = sv["MALOP"].ToString().Trim();
+
+                            CauTruyVanHoanTac =
+                                            "UPDATE DBO.SINHVIEN " +
+                                            "SET " +
+                                            "HO = N'" + ho + "'," +
+                                            "TEN = N'" + ten + "'," +
+                                            "NGAYSINH = '" + ngaysinhFormatted +"'," +
+                                            "DIACHI = N'" + diachi + "'," +
+                                            "MALOP = '" + malop + "'" +
+                                            "WHERE MASV = '" + masinhvien + "'";
+
+                        }
+                        undoList.Push(CauTruyVanHoanTac);
+                        dangthem = false;
+                        dangsua = false;
 
                         bdsSinhVien.EndEdit();
                         bdsSinhVien.ResetCurrentItem();
                         this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.SINHVIENTableAdapter.Update(this.DS_TN_CSDLPT.SINHVIEN);
+
+                        btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = false;
+                        pcSinhVien.Enabled = false;
+                        gcSinhVien.Enabled = true;
+                        txtMASV.Enabled = true; // bật lại để còn xài thêm
                     }
                     catch (Exception ex)
                     {
@@ -235,14 +251,17 @@ namespace TN_PHANTAN
                     }
                 }
             }
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-            btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            pcSinhVien.Enabled = false;
-            gcSinhVien.Enabled = true;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string masinhvien = txtMASV.Text.Trim();
+            string ho = txtHo.Text;
+            string ten = txtTen.Text;
+            string ngaysinh = (txtNgaySinh.DateTime).ToString("yyyy-MM-dd");
+            string diachi = txtDiaChi.Text;
+            string malop = txtMALOP.Text.Trim();
+
             if (bdsBangDiem.Count > 0)
             {
                 MessageBox.Show("Không thể xóa sinh viên này vì đã có bảng điểm!", "", MessageBoxButtons.OK);
@@ -256,6 +275,17 @@ namespace TN_PHANTAN
                     bdsSinhVien.RemoveCurrent();
                     this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.SINHVIENTableAdapter.Update(DS_TN_CSDLPT.SINHVIEN);
+
+                    MessageBox.Show("Xóa sinh viên thành công!", "Thông báo", MessageBoxButtons.OK);
+                    string cauTruyVanHoanTac =
+                        "INSERT INTO DBO.SINHVIEN( MASV,HO,TEN,NGAYSINH,DIACHI,MALOP) " +
+                        " VALUES( '" + masinhvien + "','" +
+                        ho + "', '" +
+                        ten + "', '" +
+                        ngaysinh + "', '" +
+                        diachi + "', '" +
+                        malop + "' ) ";
+                    undoList.Push(cauTruyVanHoanTac);
                 }
                 catch (Exception ex)
                 {
@@ -265,20 +295,37 @@ namespace TN_PHANTAN
                     return;
                 }
             }
+            btnPhucHoi.Enabled = true;
             if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
         }
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsSinhVien.CancelEdit();
-            if (btnThem.Enabled == false) bdsSinhVien.Position = vitri;
+            if (dangthem || dangsua)
+            {
+                bdsSinhVien.CancelEdit();
+                if (btnThem.Enabled == false) bdsSinhVien.Position = vitri;
 
-            gcSinhVien.Enabled = true;
-            pcSinhVien.Enabled = false;
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-            btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            checkThem = false;
-            if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
+                gcSinhVien.Enabled = true;
+                pcSinhVien.Enabled = false;
+                btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                btnGhi.Enabled = false;
+                if (undoList.Count > 0) btnPhucHoi.Enabled = true;
+                else btnPhucHoi.Enabled = false;
+                txtMASV.Enabled = true; // bật lên còn xài 
+
+                dangthem = false;
+                dangsua = false;
+                if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
+
+                return;
+            }
+            String cauTruyVanHoanTac = undoList.Pop().ToString();
+            int n = Program.ExceSqlNoneQuery(cauTruyVanHoanTac);
+            this.SINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
+            bdsSinhVien.Position = vitri;
+            if (undoList.Count > 0) btnPhucHoi.Enabled = true;
+            else btnPhucHoi.Enabled = false;
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

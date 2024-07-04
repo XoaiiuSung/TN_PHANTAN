@@ -191,7 +191,6 @@ namespace TN_PHANTAN
             }
             if(dangthem || dangsua)
             {
-                Console.WriteLine("ở đây");
                 DialogResult dr = MessageBox.Show("Bạn có chắc muốn GHI dữ liệu vào cơ sở dữ liệu ?", "Thông báo",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dr == DialogResult.OK)
@@ -310,6 +309,7 @@ namespace TN_PHANTAN
                 btnGhi.Enabled = false;
                 if(undoList.Count > 0) btnPhucHoi.Enabled = true;
                 else btnPhucHoi.Enabled = false;
+                txtMAGV.Enabled = true; // bật lên còn xài 
 
                 dangthem = false;
                 dangsua = false;

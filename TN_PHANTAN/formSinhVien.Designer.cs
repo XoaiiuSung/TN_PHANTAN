@@ -72,7 +72,7 @@
             this.txtNgaySinh = new DevExpress.XtraEditors.DateEdit();
             this.btnChonLop = new System.Windows.Forms.Button();
             this.txtMALOP = new System.Windows.Forms.TextBox();
-            this.txtDIaChi = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtHo = new System.Windows.Forms.TextBox();
             mALOPLabel = new System.Windows.Forms.Label();
@@ -454,7 +454,7 @@
             this.pcSinhVien.Controls.Add(mALOPLabel);
             this.pcSinhVien.Controls.Add(this.txtMALOP);
             this.pcSinhVien.Controls.Add(dIACHILabel);
-            this.pcSinhVien.Controls.Add(this.txtDIaChi);
+            this.pcSinhVien.Controls.Add(this.txtDiaChi);
             this.pcSinhVien.Controls.Add(this.txtTen);
             this.pcSinhVien.Controls.Add(hOLabel);
             this.pcSinhVien.Controls.Add(this.txtHo);
@@ -511,13 +511,13 @@
             this.txtMALOP.Size = new System.Drawing.Size(200, 23);
             this.txtMALOP.TabIndex = 32;
             // 
-            // txtDIaChi
+            // txtDiaChi
             // 
-            this.txtDIaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSinhVien, "DIACHI", true));
-            this.txtDIaChi.Location = new System.Drawing.Point(303, 115);
-            this.txtDIaChi.Name = "txtDIaChi";
-            this.txtDIaChi.Size = new System.Drawing.Size(892, 23);
-            this.txtDIaChi.TabIndex = 30;
+            this.txtDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSinhVien, "DIACHI", true));
+            this.txtDiaChi.Location = new System.Drawing.Point(303, 115);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(892, 23);
+            this.txtDiaChi.TabIndex = 30;
             // 
             // txtTen
             // 
@@ -602,7 +602,7 @@
         private DevExpress.XtraEditors.PanelControl pcSinhVien;
         private System.Windows.Forms.Button btnChonLop;
         private System.Windows.Forms.TextBox txtMALOP;
-        private System.Windows.Forms.TextBox txtDIaChi;
+        private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.TextBox txtHo;
         private DevExpress.XtraGrid.GridControl gcSinhVien;

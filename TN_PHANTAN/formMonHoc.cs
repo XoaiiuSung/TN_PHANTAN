@@ -1,5 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.DataAccess.Wizard.Model;
+using DevExpress.XtraEditors;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +17,10 @@ namespace TN_PHANTAN
     {
         private int vitri = 0;
         private string mamh = "";
-        private Boolean checkThem = false;
+        Stack undoList = new Stack();
+        private Boolean dangthem = false;
+        private Boolean dangsua = false;
+
         public formMonHoc()
         {
             InitializeComponent();
@@ -68,7 +73,7 @@ namespace TN_PHANTAN
                 btnThem.Enabled = btnHieuChinh.Enabled = btnGhi.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = true;
             }
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
-
+            if (bdsMonHoc.Count == 0) btnXoa.Enabled = false;
         }
 
         private void cmbCOSO_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,6 +106,23 @@ namespace TN_PHANTAN
             }
         }
 
+        private Boolean KiemTraLoiInput()
+        {
+            if (txtMAMH.Text.Trim() == "")
+            {
+                MessageBox.Show("Mã môn học không được thiếu!", "", MessageBoxButtons.OK);
+                txtMAMH.Focus();
+                return false;
+            }
+            if (txtTENMH.Text.Trim() == "")
+            {
+                MessageBox.Show("Tên môn học không được thiếu!", "", MessageBoxButtons.OK);
+                txtTENMH.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             vitri = bdsMonHoc.Position;
@@ -111,7 +133,7 @@ namespace TN_PHANTAN
             btnThem.Enabled = btnHieuChinh.Enabled = btnReload.Enabled = btnXoa.Enabled = btnThoat.Enabled = false;
             btnPhucHoi.Enabled = btnGhi.Enabled = true;
             gcMonHoc.Enabled = false;
-            checkThem = true;
+            dangthem = true;
         }
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -119,49 +141,82 @@ namespace TN_PHANTAN
             vitri = bdsMonHoc.Position;
             pcMonHoc.Enabled = true;
             gcMonHoc.Enabled = false;
+            txtMAMH.Enabled = false;
 
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
+            dangsua = true;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if( checkThem == true)
+            if (!KiemTraLoiInput())
             {
-                if (txtMAMH.Text.Trim() == "")
-                {
-                    MessageBox.Show("Mã môn học không được thiếu!", "", MessageBoxButtons.OK);
-                    txtMAMH.Focus();
-                    return;
-                }
-                if (txtTENMH.Text.Trim() == "")
-                {
-                    MessageBox.Show("Tên môn học không được thiếu!", "", MessageBoxButtons.OK);
-                    txtTENMH.Focus();
-                    return;
-                }
-                String sql = "EXEC SP_KT_MONHOC_TONTAI '" + txtMAMH.Text.Trim() + "', N'" + txtTENMH.Text.Trim() + "'";
+                return;
+            }
 
-                int kq = Program.ExecSqlNonQuery(sql);
-                if (kq == 1)
+            DataRowView mh = (DataRowView)bdsMonHoc[bdsMonHoc.Position];
+            string mamonhoc = "";
+            string tenmonhoc = "";
+
+            String sql = "";
+            int kq = 0;
+
+            if (dangthem)
+            {
+                sql = "EXEC SP_KT_MONHOC_TONTAI '" + txtMAMH.Text.Trim() + "', N'" + txtTENMH.Text.Trim() + "'";
+                kq = Program.ExecSqlNonQuery(sql);
+            }
+            if (kq == 1)
+            {
+                txtMAMH.Focus();
+                return;
+            }
+            if (kq == 2)
+            {
+                txtTENMH.Focus();
+                return;
+            }
+            if (dangthem || dangsua)
+            {
+                DialogResult dr = MessageBox.Show("Bạn có chắc muốn GHI dữ liệu vào cơ sở dữ liệu ?", "Thông báo",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
                 {
-                    txtMAMH.Focus();
-                    return;
-                }
-                if (kq == 2)
-                {
-                    txtTENMH.Focus();
-                    return;
-                }
-                else
-                {
+                    string CauTruyVanHoanTac = "";
                     try
                     {
+                        if (dangthem)
+                        {
+                            CauTruyVanHoanTac = "" +
+                                "DELETE DBO.MONHOC " +
+                                "WHERE MAMH = '" + txtMAMH.Text.Trim() + "'";
+                        }
+                        if (dangsua)
+                        {
+                            mamonhoc = mh["MAMH"].ToString().Trim();
+                            tenmonhoc = mh["TENMH"].ToString();
+
+                            CauTruyVanHoanTac =
+                                            "UPDATE DBO.MONHOC " +
+                                            "SET " +
+                                            "TENMH = N'" + tenmonhoc + "'" +
+                                            "WHERE MAMH = '" + mamonhoc + "'";
+                        }
+                        undoList.Push(CauTruyVanHoanTac);
+                        dangthem = false;
+                        dangsua = false;
 
                         bdsMonHoc.EndEdit();
                         bdsMonHoc.ResetCurrentItem();
                         this.MONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.MONHOCTableAdapter.Update(this.DS_TN_CSDLPT.MONHOC);
+
+                        btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = false;
+                        pcMonHoc.Enabled = false;
+                        gcMonHoc.Enabled = true;
+                        txtMAMH.Enabled = true; // bật lại để còn xài thêm
                     }
                     catch (Exception ex)
                     {
@@ -169,47 +224,13 @@ namespace TN_PHANTAN
                         return;
                     }
                 }
-                checkThem = false;
             }
-            else
-            {
-                if (txtMAMH.Text.Trim() == "")
-                {
-                    MessageBox.Show("Mã môn học không được thiếu!", "", MessageBoxButtons.OK);
-                    txtMAMH.Focus();
-                    return;
-                }
-                if (txtTENMH.Text.Trim() == "")
-                {
-                    MessageBox.Show("Tên môn học không được thiếu!", "", MessageBoxButtons.OK);
-                    txtTENMH.Focus();
-                    return;
-                }
-                else
-                {
-                    try
-                    {
-
-                        bdsMonHoc.EndEdit();
-                        bdsMonHoc.ResetCurrentItem();
-                        this.MONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
-                        this.MONHOCTableAdapter.Update(this.DS_TN_CSDLPT.MONHOC);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi ghi môn học! \n" + ex.Message, "", MessageBoxButtons.OK);
-                        return;
-                    }
-                }
-            }
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-            btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            pcMonHoc.Enabled = false;
-            gcMonHoc.Enabled = true;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string mamonhoc = txtMAMH.Text.Trim();
+            string tenmonhoc = txtTENMH.Text;
             if (bdsBangDiem.Count > 0)
             {
                 MessageBox.Show("Không thể xóa môn học này vì đã có bảng điểm!", "", MessageBoxButtons.OK);
@@ -233,6 +254,13 @@ namespace TN_PHANTAN
                     bdsMonHoc.RemoveCurrent();
                     this.MONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.MONHOCTableAdapter.Update(DS_TN_CSDLPT.MONHOC);
+
+                    MessageBox.Show("Xóa môn học thành công!", "Thông báo", MessageBoxButtons.OK);
+                    string cauTruyVanHoanTac =
+                        "INSERT INTO DBO.MONHOC( MAMH,TENMH) " +
+                        " VALUES( '" + mamonhoc + "',N'" +
+                        tenmonhoc + "' ) ";
+                    undoList.Push(cauTruyVanHoanTac);
                 }
                 catch (Exception ex)
                 {
@@ -242,19 +270,38 @@ namespace TN_PHANTAN
                     return;
                 }
             }
+            btnPhucHoi.Enabled = true;
             if (bdsMonHoc.Count == 0) btnXoa.Enabled = false;
         }
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsMonHoc.CancelEdit();
-            if (btnThem.Enabled == false) bdsMonHoc.Position = vitri;
+            if(dangthem || dangsua)
+            {
+                bdsMonHoc.CancelEdit();
+                if (btnThem.Enabled == false) bdsMonHoc.Position = vitri;
 
-            gcMonHoc.Enabled = true;
-            pcMonHoc.Enabled = false;
-            btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-            btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            checkThem = false;
+                gcMonHoc.Enabled = true;
+                pcMonHoc.Enabled = false;
+                btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                btnGhi.Enabled = false;
+                if (undoList.Count > 0) btnPhucHoi.Enabled = true;
+                else btnPhucHoi.Enabled = false;
+                txtMAMH.Enabled = true; // bật lên còn xài 
+
+                dangthem = false;
+                dangsua = false;
+
+                if (bdsMonHoc.Count == 0) btnXoa.Enabled = false;
+                return;
+            }
+            String cauTruyVanHoanTac = undoList.Pop().ToString();
+            int n = Program.ExceSqlNoneQuery(cauTruyVanHoanTac);
+            this.MONHOCTableAdapter.Fill(this.DS_TN_CSDLPT.MONHOC);
+            bdsMonHoc.Position = vitri;
+            if (undoList.Count > 0) btnPhucHoi.Enabled = true;
+            else btnPhucHoi.Enabled = false;
+
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

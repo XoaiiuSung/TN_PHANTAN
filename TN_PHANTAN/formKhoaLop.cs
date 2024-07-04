@@ -65,6 +65,7 @@ namespace TN_PHANTAN
             pcKhoa.Enabled = false;
 
             lastClickedTable = "LOP";
+            
 
             try
             {
@@ -91,7 +92,11 @@ namespace TN_PHANTAN
                 cmbCOSO.Enabled = false;
                 btnThem.Enabled = btnHieuChinh.Enabled = btnGhi.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = true;
             }
-            if (bdsLop.Count == 0) btnXoa.Enabled = false;
+            if (bdsLop.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
         }
 
@@ -170,14 +175,22 @@ namespace TN_PHANTAN
         private void gcKhoa_Click(object sender, EventArgs e)
         {
             lastClickedTable = "KHOA";
-            if (bdsKhoa.Count == 0) btnXoa.Enabled = false;
+            if (bdsKhoa.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
             else btnXoa.Enabled = true;
         }
 
         private void gcLop_Click(object sender, EventArgs e)
         {
             lastClickedTable = "LOP";
-            if (bdsLop.Count == 0) btnXoa.Enabled = false;
+            if (bdsLop.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
             else btnXoa.Enabled = true;
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

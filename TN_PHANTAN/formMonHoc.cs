@@ -73,7 +73,11 @@ namespace TN_PHANTAN
                 btnThem.Enabled = btnHieuChinh.Enabled = btnGhi.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = true;
             }
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            if (bdsMonHoc.Count == 0) btnXoa.Enabled = false;
+            if (bdsMonHoc.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
         }
 
         private void cmbCOSO_SelectedIndexChanged(object sender, EventArgs e)
@@ -271,7 +275,11 @@ namespace TN_PHANTAN
                 }
             }
             btnPhucHoi.Enabled = true;
-            if (bdsMonHoc.Count == 0) btnXoa.Enabled = false;
+            if (bdsMonHoc.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
         }
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -292,7 +300,11 @@ namespace TN_PHANTAN
                 dangthem = false;
                 dangsua = false;
 
-                if (bdsMonHoc.Count == 0) btnXoa.Enabled = false;
+                if (bdsMonHoc.Count == 0)
+                {
+                    btnXoa.Enabled = false;
+                    btnHieuChinh.Enabled = false;
+                }
                 return;
             }
             String cauTruyVanHoanTac = undoList.Pop().ToString();

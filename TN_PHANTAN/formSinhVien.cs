@@ -68,7 +68,11 @@ namespace TN_PHANTAN
                 btnThem.Enabled = btnHieuChinh.Enabled = btnGhi.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = true;
             }
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
-            if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
+            if (bdsSinhVien.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
         }
 
         private void cmbCOSO_SelectedIndexChanged(object sender, EventArgs e)
@@ -296,7 +300,11 @@ namespace TN_PHANTAN
                 }
             }
             btnPhucHoi.Enabled = true;
-            if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
+            if (bdsSinhVien.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnHieuChinh.Enabled = false;
+            }
         }
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -316,7 +324,11 @@ namespace TN_PHANTAN
 
                 dangthem = false;
                 dangsua = false;
-                if (bdsSinhVien.Count == 0) btnXoa.Enabled = false;
+                if (bdsSinhVien.Count == 0)
+                {
+                    btnXoa.Enabled = false;
+                    btnHieuChinh.Enabled = false;
+                }
 
                 return;
             }

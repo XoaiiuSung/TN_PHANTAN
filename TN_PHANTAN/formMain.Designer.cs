@@ -116,6 +116,7 @@
             this.btnTaoTaiKhoan.Id = 2;
             this.btnTaoTaiKhoan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTaoTaiKhoan.ImageOptions.SvgImage")));
             this.btnTaoTaiKhoan.Name = "btnTaoTaiKhoan";
+            this.btnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTaoTaiKhoan_ItemClick);
             // 
             // btnDangXuat
             // 
@@ -192,6 +193,7 @@
             this.btnDeThi.Id = 12;
             this.btnDeThi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDeThi.ImageOptions.SvgImage")));
             this.btnDeThi.Name = "btnDeThi";
+            this.btnDeThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeThi_ItemClick);
             // 
             // btnThiThu
             // 

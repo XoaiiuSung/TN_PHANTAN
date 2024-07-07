@@ -180,7 +180,7 @@ namespace TN_PHANTAN
             string ten = "";
             string diachi = "";
             string makh = "";
-            
+
             String sql = "";
             int kq = 0;
             if (dangthem)
@@ -193,7 +193,7 @@ namespace TN_PHANTAN
                 txtMAGV.Focus();
                 return;
             }
-            if(dangthem || dangsua)
+            if (dangthem || dangsua)
             {
                 DialogResult dr = MessageBox.Show("Bạn có chắc muốn GHI dữ liệu vào cơ sở dữ liệu ?", "Thông báo",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -236,7 +236,7 @@ namespace TN_PHANTAN
                         this.GIAOVIENTableAdapter.Update(this.DS_TN_CSDLPT.GIAOVIEN);
 
                         btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                        btnGhi.Enabled  = false;
+                        btnGhi.Enabled = false;
                         pcGiaoVien.Enabled = false;
                         gcGiaoVien.Enabled = true;
                         txtMAGV.Enabled = true; // bật lại để còn xài thêm
@@ -306,7 +306,7 @@ namespace TN_PHANTAN
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-             if(dangthem || dangsua)
+            if (dangthem || dangsua)
             {
                 bdsGiaoVien.CancelEdit();
                 if (btnThem.Enabled == false) bdsGiaoVien.Position = vitri;
@@ -315,7 +315,7 @@ namespace TN_PHANTAN
                 pcGiaoVien.Enabled = false;
                 btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                 btnGhi.Enabled = false;
-                if(undoList.Count > 0) btnPhucHoi.Enabled = true;
+                if (undoList.Count > 0) btnPhucHoi.Enabled = true;
                 else btnPhucHoi.Enabled = false;
                 txtMAGV.Enabled = true; // bật lên còn xài 
 
@@ -329,7 +329,7 @@ namespace TN_PHANTAN
 
                 return;
             }
-            
+
             String cauTruyVanHoanTac = undoList.Pop().ToString();
             int n = Program.ExceSqlNoneQuery(cauTruyVanHoanTac);
             this.GIAOVIENTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN);

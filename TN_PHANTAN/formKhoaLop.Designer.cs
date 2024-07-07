@@ -87,7 +87,7 @@
             this.bdsSinhVien = new System.Windows.Forms.BindingSource(this.components);
             this.SINHVIENTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.SINHVIENTableAdapter();
             this.bds_GVDK = new System.Windows.Forms.BindingSource(this.components);
-            this.msi = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
+            this.GIAOVIEN_DANGKYTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             tENKHLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
@@ -644,9 +644,9 @@
             this.bds_GVDK.DataMember = "FK_GIAOVIEN_DANGKY_LOP";
             this.bds_GVDK.DataSource = this.bdsLop;
             // 
-            // msi
+            // GIAOVIEN_DANGKYTableAdapter
             // 
-            this.msi.ClearBeforeFill = true;
+            this.GIAOVIEN_DANGKYTableAdapter.ClearBeforeFill = true;
             // 
             // formKhoaLop
             // 
@@ -756,6 +756,6 @@
         private System.Windows.Forms.BindingSource bdsSinhVien;
         private TN_CSDLPTDataSetTableAdapters.SINHVIENTableAdapter SINHVIENTableAdapter;
         private System.Windows.Forms.BindingSource bds_GVDK;
-        private TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter msi;
+        private TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter GIAOVIEN_DANGKYTableAdapter;
     }
 }

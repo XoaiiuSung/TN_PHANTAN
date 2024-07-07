@@ -56,8 +56,8 @@ namespace TN_PHANTAN
             this.GIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
             this.GIAOVIENTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN);
 
-            this.msi.Connection.ConnectionString= Program.connstr;
-            this.msi.Fill(this.DS_TN_CSDLPT.GIAOVIEN_DANGKY);
+            this.GIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString= Program.connstr;
+            this.GIAOVIEN_DANGKYTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN_DANGKY);
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
             this.SINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
 
@@ -131,8 +131,8 @@ namespace TN_PHANTAN
                 this.GIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.GIAOVIENTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN);
 
-                this.msi.Connection.ConnectionString = Program.connstr;
-                this.msi.Fill(this.DS_TN_CSDLPT.GIAOVIEN_DANGKY);
+                this.GIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.GIAOVIEN_DANGKYTableAdapter.Fill(this.DS_TN_CSDLPT.GIAOVIEN_DANGKY);
                 this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.SINHVIENTableAdapter.Fill(this.DS_TN_CSDLPT.SINHVIEN);
             }

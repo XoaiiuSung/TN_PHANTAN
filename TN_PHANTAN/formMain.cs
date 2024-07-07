@@ -139,6 +139,28 @@ namespace TN_PHANTAN
             }
         }
 
-        
+        private void btnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formTaoTaiKhoan));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formTaoTaiKhoan f = new formTaoTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDeThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formDeThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formDeThi f = new formDeThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

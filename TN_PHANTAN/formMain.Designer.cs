@@ -155,6 +155,7 @@
             this.btnDanhSachDKT.Id = 7;
             this.btnDanhSachDKT.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDanhSachDKT.ImageOptions.SvgImage")));
             this.btnDanhSachDKT.Name = "btnDanhSachDKT";
+            this.btnDanhSachDKT.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDanhSachDKT_ItemClick);
             // 
             // btnSinhVien
             // 
@@ -186,6 +187,7 @@
             this.btnGiangVienDK.Id = 11;
             this.btnGiangVienDK.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnGiangVienDK.ImageOptions.SvgImage")));
             this.btnGiangVienDK.Name = "btnGiangVienDK";
+            this.btnGiangVienDK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGiangVienDK_ItemClick);
             // 
             // btnDeThi
             // 

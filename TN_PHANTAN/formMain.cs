@@ -162,5 +162,29 @@ namespace TN_PHANTAN
                 f.Show();
             }
         }
+
+        private void btnGiangVienDK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(formGVDK));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formGVDK f = new formGVDK();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDanhSachDKT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frpt_DSDK_THI));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frpt_DSDK_THI f = new frpt_DSDK_THI();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

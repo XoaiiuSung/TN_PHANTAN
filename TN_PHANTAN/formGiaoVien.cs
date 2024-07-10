@@ -280,9 +280,9 @@ namespace TN_PHANTAN
                     MessageBox.Show("Xóa giáo viên thành công!", "Thông báo", MessageBoxButtons.OK);
                     string cauTruyVanHoanTac =
                         "INSERT INTO DBO.GIAOVIEN( MAGV,HO,TEN,DIACHI,MAKH) " +
-                        " VALUES( '" + magiaovien + "','" +
-                        ho + "', '" +
-                        ten + "', '" +
+                        " VALUES( '" + magiaovien + "',N'" +
+                        ho + "', N'" +
+                        ten + "', N'" +
                         diachi + "', '" +
                         makh + "' ) ";
                     undoList.Push(cauTruyVanHoanTac);

@@ -91,6 +91,12 @@
     <Compile Include="formGiaoVien.Designer.cs">
       <DependentUpon>formGiaoVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="formGVDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formGVDK.Designer.cs">
+      <DependentUpon>formGVDK.cs</DependentUpon>
+    </Compile>
     <Compile Include="formKhoaLop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,12 @@
     <Compile Include="formSinhVien.Designer.cs">
       <DependentUpon>formSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="formSV_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSV_Main.Designer.cs">
+      <DependentUpon>formSV_Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="formTaoTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,12 @@
     </Compile>
     <Compile Include="frpt_BangDiemMonHoc.Designer.cs">
       <DependentUpon>frpt_BangDiemMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frpt_DSDK_THI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frpt_DSDK_THI.Designer.cs">
+      <DependentUpon>frpt_DSDK_THI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,6 +170,12 @@
     <Compile Include="Xrpt_BangDiemMonHoc.Designer.cs">
       <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xrpt_DSDK_THI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Xrpt_DSDK_THI.Designer.cs">
+      <DependentUpon>Xrpt_DSDK_THI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="formDangNhap.resx">
       <DependentUpon>formDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formGiaoVien.resx">
       <DependentUpon>formGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formGVDK.resx">
+      <DependentUpon>formGVDK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formKhoaLop.resx">
       <DependentUpon>formKhoaLop.cs</DependentUpon>
@@ -173,11 +200,17 @@
     <EmbeddedResource Include="formSinhVien.resx">
       <DependentUpon>formSinhVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formSV_Main.resx">
+      <DependentUpon>formSV_Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formTaoTaiKhoan.resx">
       <DependentUpon>formTaoTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frpt_BangDiemMonHoc.resx">
       <DependentUpon>frpt_BangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frpt_DSDK_THI.resx">
+      <DependentUpon>frpt_DSDK_THI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -197,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xrpt_BangDiemMonHoc.resx">
       <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xrpt_DSDK_THI.resx">
+      <DependentUpon>Xrpt_DSDK_THI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

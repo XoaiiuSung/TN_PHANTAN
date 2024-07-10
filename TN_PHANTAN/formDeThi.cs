@@ -232,8 +232,8 @@ namespace TN_PHANTAN
             {
                 return;
             }
-            
-            
+
+
 
             String sql = "";
             int kq = 0;
@@ -264,7 +264,7 @@ namespace TN_PHANTAN
                         }
                         if (dangsua)
                         {
-                            
+
 
                             CauTruyVanHoanTac =
                                             "UPDATE DBO.BODE " +
@@ -319,16 +319,16 @@ namespace TN_PHANTAN
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string cauhoi = txtCauHoi.Text.Trim();
-            string mamh = txtMAMH.Text.Trim();
-            string trinhdo = cmbTrinhDo.Text;
-            string noidung = txtNoiDung.Text;
-            string caua = txtA.Text;
-            string caub = txtB.Text;
-            string cauc = txtC.Text;
-            string caud = txtD.Text;
-            string dapan = cmbDapAn.Text;
-            string magv = Program.username;
+            cauhoi = txtCauHoi.Text.Trim();
+            mamh = txtMAMH.Text.Trim();
+            trinhdo = cmbTrinhDo.Text;
+            noidung = txtNoiDung.Text;
+            caua = txtA.Text;
+            caub = txtB.Text;
+            cauc = txtC.Text;
+            caud = txtD.Text;
+            dapan = cmbDapAn.Text;
+            magv = Program.username;
 
 
             if (MessageBox.Show("Bạn có thât sự muốn xóa câu hỏi này ???", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -354,6 +354,18 @@ namespace TN_PHANTAN
                         dapan + "', '" +
                         magv + "' ) ";
                     undoList.Push(cauTruyVanHoanTac);
+
+
+                        cauhoi = "";
+                        mamh = "";
+                        trinhdo = "";
+                        noidung = "";
+                        caua = "";
+                        caub = "";
+                        cauc = "";
+                        caud = "";
+                        dapan = "";
+                        magv = "";
                 }
                 catch (Exception ex)
                 {
@@ -400,7 +412,7 @@ namespace TN_PHANTAN
 
             String cauTruyVanHoanTac = undoList.Pop().ToString();
             int n = Program.ExceSqlNoneQuery(cauTruyVanHoanTac);
-            MessageBox.Show("cautv:" + cauTruyVanHoanTac, "", MessageBoxButtons.OK);
+            //MessageBox.Show("cautv:" + cauTruyVanHoanTac, "", MessageBoxButtons.OK);
             this.BODETableAdapter.FillByGV_MH(this.DS_TN_CSDLPT.BODE, Program.username, cmbMonHoc.SelectedValue.ToString().Trim());
             bdsBoDe.Position = vitri;
             if (undoList.Count > 0) btnPhucHoi.Enabled = true;

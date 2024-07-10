@@ -154,7 +154,7 @@ namespace TN_PHANTAN
             gcSinhVien.Enabled = false;
             dangthem = true;
             
-            txtNgaySinh.EditValue = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNgaySinh.EditValue = DateTime.Now;
         }
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -283,10 +283,10 @@ namespace TN_PHANTAN
                     MessageBox.Show("Xóa sinh viên thành công!", "Thông báo", MessageBoxButtons.OK);
                     string cauTruyVanHoanTac =
                         "INSERT INTO DBO.SINHVIEN( MASV,HO,TEN,NGAYSINH,DIACHI,MALOP) " +
-                        " VALUES( '" + masinhvien + "','" +
-                        ho + "', '" +
+                        " VALUES( '" + masinhvien + "',N'" +
+                        ho + "', N'" +
                         ten + "', '" +
-                        ngaysinh + "', '" +
+                        ngaysinh + "', N'" +
                         diachi + "', '" +
                         malop + "' ) ";
                     undoList.Push(cauTruyVanHoanTac);

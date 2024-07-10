@@ -17,7 +17,8 @@ namespace TN_PHANTAN
     public partial class formDangNhap : DevExpress.XtraEditors.XtraForm
     {
         private SqlConnection conn_publisher = new SqlConnection();
-
+        private Boolean giaovien = false;
+        private Boolean sinhvien = false;
         private void LayDSPM(String cmd)
         {
             DataTable dt = new DataTable();
@@ -57,6 +58,7 @@ namespace TN_PHANTAN
             if (KetNoi_CSDLGOC() == 0) return;
             LayDSPM("SELECT * FROM V_DS_PHANMANH");
             cmbCoSo.SelectedIndex = 1; cmbCoSo.SelectedIndex = 0;
+            giaovien = true; sinhvien = false;
         }
 
         /*bị thừa*/
@@ -77,47 +79,84 @@ namespace TN_PHANTAN
                 return;
             }
 
-            Program.mlogin = txtLogin.Text; Program.password = txtPass.Text;
-            if (Program.KetNoi() == 0) return;
-
-            Program.mCoso = cmbCoSo.SelectedIndex;
-            Program.mloginDN = Program.mlogin;
-            Program.passwordDN = Program.password;
-            string strlenh = "EXEC SP_LayThongTinGiaoVien '" + Program.mlogin + "'";
-
-            Program.myReader = Program.ExecSqlDataReader(strlenh);
-            if (Program.myReader == null) return;
-            Program.myReader.Read();
-
-            Program.username = Program.myReader.GetString(0);
-            if (Convert.IsDBNull(Program.username))
+            if (giaovien)
             {
-                MessageBox.Show("Login bạn nhập không có quyền truy cập cơ sở dữ liệu\n Bạn xem lại username, password");
-                return;
+                Program.mlogin = txtLogin.Text; Program.password = txtPass.Text;
+                if (Program.KetNoi() == 0) return;
+
+                Program.mCoso = cmbCoSo.SelectedIndex;
+                Program.mloginDN = Program.mlogin;
+                Program.passwordDN = Program.password;
+                string strlenh = "EXEC SP_LayThongTinGiaoVien '" + Program.mlogin + "'";
+
+                Program.myReader = Program.ExecSqlDataReader(strlenh);
+                if (Program.myReader == null) return;
+                Program.myReader.Read();
+
+                Program.username = Program.myReader.GetString(0);
+                if (Convert.IsDBNull(Program.username))
+                {
+                    MessageBox.Show("Login bạn nhập không có quyền truy cập cơ sở dữ liệu\n Bạn xem lại username, password");
+                    return;
+                }
+                Program.mHoten = Program.myReader.GetString(1);
+                Program.mGroup = Program.myReader.GetString(2);
+                Program.myReader.Close();
+                Program.conn.Close();
+
+                Program.formChinh = new formMain();
+                Program.formChinh.MAGV.Text = "Mã giáo viên: " + Program.username;
+                Program.formChinh.HOTEN.Text = "Họ tên: " + Program.mHoten;
+                Program.formChinh.NHOM.Text = "Nhóm: " + Program.mGroup;
+                giaovien = sinhvien = false;
+                this.Hide();
+                Program.formChinh.ShowDialog();
+                this.Close();
             }
-            Program.mHoten = Program.myReader.GetString(1);
-            Program.mGroup = Program.myReader.GetString(2);
-            Program.myReader.Close();
-            Program.conn.Close();
-            
-            Program.formChinh = new formMain();
-            Program.formChinh.MAGV.Text = "Mã giáo viên: " + Program.username;
-            Program.formChinh.HOTEN.Text = "Họ tên: " + Program.mHoten;
-            Program.formChinh.NHOM.Text = "Nhóm: " + Program.mGroup;
-            this.Hide();
-            Program.formChinh.ShowDialog();
-            this.Close();
-            //Program.formChinh.HienThiMenu();
+            if (sinhvien)
+            {
+                Program.mlogin = "SINHVIENSA"; Program.password = "9999";
+
+                if (Program.KetNoi() == 0) return;
+
+                Program.mCoso = cmbCoSo.SelectedIndex;
+                Program.mloginDN = Program.mlogin;
+                Program.passwordDN = Program.password;
+                String sql = "";
+                int kq = 0;
+                sql = "EXEC SP_KT_SINHVIEN_DANGNHAP '" + txtLogin.Text.Trim() + "','" + txtPass.Text.Trim()+"'";
+                kq = Program.ExecSqlNonQuery(sql);
+                if (kq == 1)
+                {
+                    txtLogin.Focus();
+                    return;
+                }
+                //Program.conn.Close();
+                Program.formSV = new formSV_Main();
+
+                giaovien = sinhvien = false;
+                this.Hide();
+                Program.formSV.ShowDialog();
+                this.Close();
+
+            }
+
+
+
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             label2.Text = "Tài Khoản";
+            giaovien = true;
+            sinhvien = false;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             label2.Text = "MSSV";
+            giaovien = false;
+            sinhvien = true;
         }
         /*Thêm ở đay mới đúng*/
         private void cmbCoSo_SelectedIndexChanged(object sender, EventArgs e)

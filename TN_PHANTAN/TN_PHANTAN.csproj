@@ -109,6 +109,12 @@
     <Compile Include="formKhoaLop.Designer.cs">
       <DependentUpon>formKhoaLop.cs</DependentUpon>
     </Compile>
+    <Compile Include="formKhoiPhucMKSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formKhoiPhucMKSV.Designer.cs">
+      <DependentUpon>formKhoiPhucMKSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="formMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     <Compile Include="formTaoTaiKhoan.Designer.cs">
       <DependentUpon>formTaoTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="formTaoTKSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formTaoTKSV.Designer.cs">
+      <DependentUpon>formTaoTKSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="formThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,12 @@
     </Compile>
     <Compile Include="frpt_DSDK_THI.Designer.cs">
       <DependentUpon>frpt_DSDK_THI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frpt_XemKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frpt_XemKetQua.Designer.cs">
+      <DependentUpon>frpt_XemKetQua.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,6 +212,12 @@
     <Compile Include="Xrpt_DSDK_SS.Designer.cs">
       <DependentUpon>Xrpt_DSDK_SS.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xrpt_XemKetQua.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Xrpt_XemKetQua.Designer.cs">
+      <DependentUpon>Xrpt_XemKetQua.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CauHoiItem.resx">
       <DependentUpon>CauHoiItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formKhoaLop.resx">
       <DependentUpon>formKhoaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formKhoiPhucMKSV.resx">
+      <DependentUpon>formKhoiPhucMKSV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formMain.resx">
       <DependentUpon>formMain.cs</DependentUpon>
@@ -230,6 +257,9 @@
     <EmbeddedResource Include="formTaoTaiKhoan.resx">
       <DependentUpon>formTaoTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formTaoTKSV.resx">
+      <DependentUpon>formTaoTKSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formThi.resx">
       <DependentUpon>formThi.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frpt_DSDK_THI.resx">
       <DependentUpon>frpt_DSDK_THI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frpt_XemKetQua.resx">
+      <DependentUpon>frpt_XemKetQua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -260,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xrpt_DSDK_SS.resx">
       <DependentUpon>Xrpt_DSDK_SS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xrpt_XemKetQua.resx">
+      <DependentUpon>Xrpt_XemKetQua.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

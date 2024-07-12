@@ -64,7 +64,8 @@
             this.barButtonItem1,
             this.btnDoiMK,
             this.btnDangXuat,
-            this.btnThoat});
+            this.btnThoat,
+            this.rbSV_Main.SearchEditItem});
             this.rbSV_Main.Location = new System.Drawing.Point(0, 0);
             this.rbSV_Main.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV_Main.MaxItemId = 6;
@@ -73,14 +74,6 @@
             this.rbSV_Main.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            // 
-            // 
-            // 
-            this.rbSV_Main.SearchEditItem.AccessibleName = "Search Item";
-            this.rbSV_Main.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
-            this.rbSV_Main.SearchEditItem.EditWidth = 150;
-            this.rbSV_Main.SearchEditItem.Id = -5000;
-            this.rbSV_Main.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.rbSV_Main.Size = new System.Drawing.Size(1260, 193);
             this.rbSV_Main.StatusBar = this.ribbonStatusBar;
             // 
@@ -98,6 +91,7 @@
             this.barButtonItem1.Id = 2;
             this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // btnDoiMK
             // 

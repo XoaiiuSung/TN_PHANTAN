@@ -100,6 +100,8 @@ namespace TN_PHANTAN
             cmbLop.SelectedIndex = 0;
             malop = cmbLop.SelectedValue.ToString();
 
+            cmbLanThi.SelectedIndex = 1; cmbLanThi.SelectedIndex = 0;
+
             cmbTenMH.SelectedIndex = 0; // Chọn phần tử đầu tiên
             mamonhoc = cmbTenMH.SelectedValue.ToString();
 

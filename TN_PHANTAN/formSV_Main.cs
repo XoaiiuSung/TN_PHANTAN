@@ -70,5 +70,18 @@ namespace TN_PHANTAN
                 Application.Exit();
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Program.formSV.rbSV_Main.Enabled = false;
+            Form frm = this.CheckExists(typeof(frpt_XemKetQua));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frpt_XemKetQua f = new frpt_XemKetQua();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

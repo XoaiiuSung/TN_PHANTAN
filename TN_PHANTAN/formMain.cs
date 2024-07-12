@@ -20,11 +20,6 @@ namespace TN_PHANTAN
             InitializeComponent();
         }
 
-        private void ribbonControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
 
 
@@ -191,6 +186,32 @@ namespace TN_PHANTAN
             else
             {
                 frpt_DSDK_THI f = new frpt_DSDK_THI();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnTaoTKVS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rbMain.Enabled = false;
+            Form frm = this.CheckExists(typeof(formTaoTKSV));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formTaoTKSV f = new formTaoTKSV();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnKhoiPhucSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rbMain.Enabled = false;
+            Form frm = this.CheckExists(typeof(formKhoiPhucMKSV));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formKhoiPhucMKSV f = new formKhoiPhucMKSV();
                 f.MdiParent = this;
                 f.Show();
             }

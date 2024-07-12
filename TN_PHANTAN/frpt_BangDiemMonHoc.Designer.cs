@@ -44,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbLanThi = new System.Windows.Forms.ComboBox();
             this.btnReview = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             tENLOPLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DS_TN_CSDLPT)).BeginInit();
@@ -107,15 +108,19 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BAITHITableAdapter = null;
             this.tableAdapterManager.BANGDIEMTableAdapter = null;
             this.tableAdapterManager.BODETableAdapter = null;
             this.tableAdapterManager.COSOTableAdapter = null;
+            this.tableAdapterManager.DSDK_THITN_SONGSONGTableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = null;
             this.tableAdapterManager.GIAOVIENTableAdapter = null;
+            this.tableAdapterManager.GV_HOTENTableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = this.LOPTableAdapter;
             this.tableAdapterManager.MONHOCTableAdapter = this.MONHOCTableAdapter;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.TBTRINHDOTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // MONHOCTableAdapter
@@ -168,12 +173,7 @@
             this.cmbLanThi.FormattingEnabled = true;
             this.cmbLanThi.Items.AddRange(new object[] {
             "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
+            "2"});
             this.cmbLanThi.Location = new System.Drawing.Point(264, 170);
             this.cmbLanThi.Name = "cmbLanThi";
             this.cmbLanThi.Size = new System.Drawing.Size(64, 30);
@@ -181,7 +181,7 @@
             // 
             // btnReview
             // 
-            this.btnReview.Location = new System.Drawing.Point(558, 226);
+            this.btnReview.Location = new System.Drawing.Point(497, 226);
             this.btnReview.Margin = new System.Windows.Forms.Padding(6);
             this.btnReview.Name = "btnReview";
             this.btnReview.Size = new System.Drawing.Size(148, 45);
@@ -189,12 +189,23 @@
             this.btnReview.Text = "Preview";
             this.btnReview.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(660, 226);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(6);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(148, 45);
+            this.btnThoat.TabIndex = 10;
+            this.btnThoat.Text = "THOÁT";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
             // frpt_BangDiemMonHoc
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1647, 587);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnReview);
             this.Controls.Add(this.cmbLanThi);
             this.Controls.Add(this.label2);
@@ -232,5 +243,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbLanThi;
         private DevExpress.XtraEditors.SimpleButton btnReview;
+        private DevExpress.XtraEditors.SimpleButton btnThoat;
     }
 }

@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,9 +35,13 @@ namespace TN_PHANTAN
             string tungay = txtTuNgay.DateTime.ToString("dd/MM/yyyy");
             string denngay = txtDenNgay.DateTime.ToString("dd/MM/yyyy");
 
-            Xrpt_DSDK_THI rpt = new Xrpt_DSDK_THI(tungay, denngay);
+            
+
+            Xrpt_DSDK_SS rpt = new Xrpt_DSDK_SS(tungay, denngay);
+            
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -43,8 +49,15 @@ namespace TN_PHANTAN
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
+                Program.formChinh.rbMain.Enabled = true;
                 this.Dispose();
             }
+        }
+
+        private void frpt_DSDK_THI_Load(object sender, EventArgs e)
+        {
+            txtTuNgay.DateTime = DateTime.Now.Date;
+            txtDenNgay.DateTime =DateTime.Now.Date;
         }
     }
 }

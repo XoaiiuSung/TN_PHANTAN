@@ -45,6 +45,9 @@ namespace TN_PHANTAN
         public static string malopduocchon = "";
         public static string makhoaduocchon = "";
 
+        //FORM SV MAIN
+        
+
         public static int KetNoi()
         {
             if (Program.conn != null && Program.conn.State == ConnectionState.Open)

@@ -185,6 +185,7 @@ namespace TN_PHANTAN
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát tạo tài khoản", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
+                Program.formChinh.rbMain.Enabled = true;
                 this.Dispose();
             }
         }

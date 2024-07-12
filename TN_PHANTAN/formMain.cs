@@ -52,6 +52,7 @@ namespace TN_PHANTAN
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formKhoaLop));
             if (frm != null) frm.Activate();
             else
@@ -72,6 +73,7 @@ namespace TN_PHANTAN
 
         private void btnBangDiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(frpt_BangDiemMonHoc));
             if (frm != null) frm.Activate();
             else
@@ -84,6 +86,7 @@ namespace TN_PHANTAN
 
         private void btnGiangVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formGiaoVien));
             if (frm != null) frm.Activate();
             else
@@ -96,6 +99,7 @@ namespace TN_PHANTAN
 
         private void btnSinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formSinhVien));
             if (frm != null) frm.Activate();
             else
@@ -108,6 +112,7 @@ namespace TN_PHANTAN
 
         private void btnMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formMonHoc));
             if (frm != null) frm.Activate();
             else
@@ -141,6 +146,7 @@ namespace TN_PHANTAN
 
         private void btnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formTaoTaiKhoan));
             if (frm != null) frm.Activate();
             else
@@ -153,6 +159,7 @@ namespace TN_PHANTAN
 
         private void btnDeThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formDeThi));
             if (frm != null) frm.Activate();
             else
@@ -165,6 +172,7 @@ namespace TN_PHANTAN
 
         private void btnGiangVienDK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(formGVDK));
             if (frm != null) frm.Activate();
             else
@@ -177,6 +185,7 @@ namespace TN_PHANTAN
 
         private void btnDanhSachDKT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            rbMain.Enabled = false;
             Form frm = this.CheckExists(typeof(frpt_DSDK_THI));
             if (frm != null) frm.Activate();
             else

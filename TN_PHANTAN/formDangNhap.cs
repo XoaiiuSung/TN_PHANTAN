@@ -122,17 +122,44 @@ namespace TN_PHANTAN
                 Program.mCoso = cmbCoSo.SelectedIndex;
                 Program.mloginDN = Program.mlogin;
                 Program.passwordDN = Program.password;
+
                 String sql = "";
                 int kq = 0;
-                sql = "EXEC SP_KT_SINHVIEN_DANGNHAP '" + txtLogin.Text.Trim() + "','" + txtPass.Text.Trim()+"'";
+                sql = "EXEC SP_KT_SINHVIEN_DANGNHAP '" + txtLogin.Text.Trim() + "','" + txtPass.Text.Trim() + "'";
                 kq = Program.ExecSqlNonQuery(sql);
                 if (kq == 1)
                 {
                     txtLogin.Focus();
                     return;
                 }
-                //Program.conn.Close();
+
+                string strlenh = "EXEC SP_LayThongTinSinhVien '" + txtLogin.Text.Trim() + "','" + txtPass.Text.Trim() + "'";
+                Program.myReader = Program.ExecSqlDataReader(strlenh);
+                if (Program.myReader == null) return;
+                Program.myReader.Read();
+
+                Program.username = Program.myReader.GetString(0);
+                if (Convert.IsDBNull(Program.username))
+                {
+                    MessageBox.Show("Login bạn nhập không có quyền truy cập cơ sở dữ liệu\n Bạn xem lại username, password");
+                    return;
+                }
+                Program.mHoten = Program.myReader.GetString(1);
+                Program.mGroup = Program.myReader.GetString(2);
+                Program.myReader.Close();
+                Program.conn.Close();
+
+
+
+
+
+
+                
+                ////Program.conn.Close();
                 Program.formSV = new formSV_Main();
+                Program.formSV.MASV.Text = "Mã sinh viên: " + Program.username;
+                Program.formSV.HOTEN.Text = "Họ tên: " +Program.mHoten;
+                Program.formSV.NHOM.Text = "Nhóm: " + Program.mGroup;
 
                 giaovien = sinhvien = false;
                 this.Hide();

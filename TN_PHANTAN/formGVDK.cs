@@ -170,9 +170,9 @@ namespace TN_PHANTAN
 
         private Boolean KiemTraLoiInput()
         {
-            if (txtNgayThi.DateTime < DateTime.Now)
+            if (txtNgayThi.DateTime < DateTime.Now.Date)
             {
-                MessageBox.Show("Ngày thi phải lớn hơn  ngày hiện tại!", "", MessageBoxButtons.OK);
+                MessageBox.Show("Ngày thi phải lớn hơn hoặc bằng ngày hiện tại!", "", MessageBoxButtons.OK);
                 txtNgayThi.Focus();
                 return false;
             }
@@ -229,11 +229,10 @@ namespace TN_PHANTAN
             cmbTenGV.SelectedIndex = 1; cmbTenGV.SelectedIndex = 0;
             cmbTenMH.SelectedIndex = 1; cmbTenMH.SelectedIndex = 0;
             cmbTenLop.SelectedIndex = 1; cmbTenLop.SelectedIndex = 0;
-            cmbTrinhDo.SelectedIndex = 1; 
-            cmbTrinhDo.SelectedIndex = 0;
+            cmbTrinhDo.SelectedIndex = 1;cmbTrinhDo.SelectedIndex = 0;
             cmbLanThi.SelectedIndex = 1; cmbLanThi.SelectedIndex = 0;
 
-            txtNgayThi.EditValue = DateTime.Now;
+            txtNgayThi.EditValue = DateTime.Now.Date;
 
         }
 
@@ -496,6 +495,7 @@ namespace TN_PHANTAN
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
+                Program.formChinh.rbMain.Enabled = true;
                 this.Dispose();
             }
         }

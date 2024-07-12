@@ -144,5 +144,15 @@ namespace TN_PHANTAN
             }
             catch (Exception ex) { }
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát", "", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                Program.formChinh.rbMain.Enabled = true;
+                this.Dispose();
+            }
+        }
     }
 }

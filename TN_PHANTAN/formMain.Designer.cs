@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.rbMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnKhoaLop = new DevExpress.XtraBars.BarButtonItem();
             this.btnTaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
@@ -51,7 +51,6 @@
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -65,18 +64,17 @@
             this.MAGV = new System.Windows.Forms.ToolStripStatusLabel();
             this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ribbonControl1
+            // rbMain
             // 
-            this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(55, 57, 55, 57);
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.ribbonControl1.SearchEditItem,
+            this.rbMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(55, 57, 55, 57);
+            this.rbMain.ExpandCollapseItem.Id = 0;
+            this.rbMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.rbMain.ExpandCollapseItem,
             this.btnKhoaLop,
             this.btnTaoTaiKhoan,
             this.btnDangXuat,
@@ -90,17 +88,25 @@
             this.btnGiangVienDK,
             this.btnDeThi,
             this.btnThiThu});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 14;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.OptionsMenuMinWidth = 601;
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.rbMain.Location = new System.Drawing.Point(0, 0);
+            this.rbMain.Margin = new System.Windows.Forms.Padding(6);
+            this.rbMain.MaxItemId = 14;
+            this.rbMain.Name = "rbMain";
+            this.rbMain.OptionsMenuMinWidth = 601;
+            this.rbMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2,
             this.ribbonPage3});
-            this.ribbonControl1.Size = new System.Drawing.Size(1332, 193);
-            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
+            // 
+            // 
+            // 
+            this.rbMain.SearchEditItem.AccessibleName = "Search Item";
+            this.rbMain.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
+            this.rbMain.SearchEditItem.EditWidth = 150;
+            this.rbMain.SearchEditItem.Id = -5000;
+            this.rbMain.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.rbMain.Size = new System.Drawing.Size(1332, 193);
+            this.rbMain.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // btnKhoaLop
             // 
@@ -212,8 +218,7 @@
             this.ribbonPageGroup8,
             this.ribbonPageGroup9,
             this.ribbonPageGroup10,
-            this.ribbonPageGroup11,
-            this.ribbonPageGroup12});
+            this.ribbonPageGroup11});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản lý";
             // 
@@ -246,11 +251,6 @@
             // 
             this.ribbonPageGroup11.ItemLinks.Add(this.btnDeThi);
             this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // ribbonPageGroup12
-            // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.btnThiThu);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             // 
             // ribbonPage2
             // 
@@ -341,15 +341,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1332, 560);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.ribbonControl1);
+            this.Controls.Add(this.rbMain);
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formMain";
-            this.Ribbon = this.ribbonControl1;
+            this.Ribbon = this.rbMain;
             this.Text = "Trắc Nghiệm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.formMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -359,8 +359,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
@@ -393,8 +391,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem btnThiThu;
+        public DevExpress.XtraBars.Ribbon.RibbonControl rbMain;
     }
 }
 

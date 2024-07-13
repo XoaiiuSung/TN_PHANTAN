@@ -264,6 +264,37 @@ namespace TN_PHANTAN
         {
             if (!KiemTraLoiInput())
             {
+                this.TBTRINHDOTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.TBTRINHDOTableAdapter.Fill(this.DS_TN_CSDLPT.TBTRINHDO);
+                cmbTrinhDo.DataSource = this.DS_TN_CSDLPT.TBTRINHDO;
+                cmbTrinhDo.DisplayMember = "TENTRINHDO";
+                cmbTrinhDo.ValueMember = "TRINHDO";
+
+                this.LOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.LOPTableAdapter.Fill(this.DS_TN_CSDLPT.LOP);
+                cmbTenLop.DataSource = this.DS_TN_CSDLPT.LOP;
+                cmbTenLop.DisplayMember = "TENLOP";
+                cmbTenLop.ValueMember = "MALOP";
+
+                this.MONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.MONHOCTableAdapter.Fill(this.DS_TN_CSDLPT.MONHOC);
+                cmbTenMH.DataSource = this.DS_TN_CSDLPT.MONHOC;
+                cmbTenMH.DisplayMember = "TENMH";
+                cmbTenMH.ValueMember = "MAMH";
+
+                this.GV_HOTENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.GV_HOTENTableAdapter.Fill(this.DS_TN_CSDLPT.GV_HOTEN);
+                cmbTenGV.DataSource = this.DS_TN_CSDLPT.GV_HOTEN;
+                cmbTenGV.DisplayMember = "TEN";
+                cmbTenGV.ValueMember = "MAGV";
+
+                cmbTenGV.SelectedIndex = 1; cmbTenGV.SelectedIndex = 0;
+                cmbTenMH.SelectedIndex = 1; cmbTenMH.SelectedIndex = 0;
+                cmbTenLop.SelectedIndex = 1; cmbTenLop.SelectedIndex = 0;
+                cmbTrinhDo.SelectedIndex = 1; cmbTrinhDo.SelectedIndex = 0;
+                cmbLanThi.SelectedIndex = 1; cmbLanThi.SelectedIndex = 0;
+
+                txtNgayThi.EditValue = DateTime.Now.Date;
                 return;
             }
             

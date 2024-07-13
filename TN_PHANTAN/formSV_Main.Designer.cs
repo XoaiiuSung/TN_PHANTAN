@@ -60,12 +60,12 @@
             this.rbSV_Main.ExpandCollapseItem.Id = 0;
             this.rbSV_Main.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.rbSV_Main.ExpandCollapseItem,
+            this.rbSV_Main.SearchEditItem,
             this.btnThi,
             this.barButtonItem1,
             this.btnDoiMK,
             this.btnDangXuat,
-            this.btnThoat,
-            this.rbSV_Main.SearchEditItem});
+            this.btnThoat});
             this.rbSV_Main.Location = new System.Drawing.Point(0, 0);
             this.rbSV_Main.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV_Main.MaxItemId = 6;
@@ -87,7 +87,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "XEM KET QUA";
+            this.barButtonItem1.Caption = "XEM KẾT QUẢ";
             this.barButtonItem1.Id = 2;
             this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";

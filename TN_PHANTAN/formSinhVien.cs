@@ -239,6 +239,7 @@ namespace TN_PHANTAN
 
                         bdsSinhVien.EndEdit();
                         bdsSinhVien.ResetCurrentItem();
+
                         this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.SINHVIENTableAdapter.Update(this.DS_TN_CSDLPT.SINHVIEN);
 

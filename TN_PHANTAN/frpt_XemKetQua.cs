@@ -83,7 +83,7 @@ namespace TN_PHANTAN
             DialogResult dr = MessageBox.Show("Bạn có chắc muốn thoát", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                Program.formChinh.rbMain.Enabled = true;
+                Program.formSV.rbSV_Main.Enabled = true;
                 this.Dispose();
             }
         }

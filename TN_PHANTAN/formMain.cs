@@ -35,6 +35,11 @@ namespace TN_PHANTAN
 
         private void formMain_Load(object sender, EventArgs e)
         {
+            if(Program.mGroup == "GIANGVIEN")
+            {
+                rbBaoCao.Visible = false;
+                btnKhoaLop.Enabled = btnSinhVien.Enabled = btnMonHoc.Enabled = btnGiangVien.Enabled = btnGiangVienDK.Enabled = btnTaoTaiKhoan.Enabled = btnTaoTKVS.Enabled = btnKhoiPhucSV.Enabled = false;
+            }
             //Form frm = this.CheckExists(typeof(formDangNhap));
             //if (frm != null) frm.Activate();
             //else

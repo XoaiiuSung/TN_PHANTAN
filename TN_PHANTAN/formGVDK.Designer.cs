@@ -71,6 +71,8 @@
             this.colSOCAUTHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTHOIGIAN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pcGVDK = new DevExpress.XtraEditors.PanelControl();
+            this.cmbTrinhDo = new System.Windows.Forms.ComboBox();
+            this.bdsTBTrinhDo = new System.Windows.Forms.BindingSource(this.components);
             this.txtTrinhDo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSoCauThi = new System.Windows.Forms.TextBox();
@@ -89,9 +91,7 @@
             this.GV_HOTENTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.GV_HOTENTableAdapter();
             this.MONHOCTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter();
             this.LOPTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.LOPTableAdapter();
-            this.bdsTBTrinhDo = new System.Windows.Forms.BindingSource(this.components);
             this.TBTRINHDOTableAdapter = new TN_PHANTAN.TN_CSDLPTDataSetTableAdapters.TBTRINHDOTableAdapter();
-            this.cmbTrinhDo = new System.Windows.Forms.ComboBox();
             tENLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -109,12 +109,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcGVDK)).BeginInit();
             this.pcGVDK.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsTBTrinhDo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayThi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayThi.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGV_HOTEN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsTBTrinhDo)).BeginInit();
             this.SuspendLayout();
             // 
             // tENLabel
@@ -391,9 +391,11 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BAITHITableAdapter = null;
             this.tableAdapterManager.BANGDIEMTableAdapter = null;
             this.tableAdapterManager.BODETableAdapter = null;
             this.tableAdapterManager.COSOTableAdapter = null;
+            this.tableAdapterManager.DSDK_THITN_SONGSONGTableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = this.GIAOVIEN_DANGKYTableAdapter;
             this.tableAdapterManager.GIAOVIENTableAdapter = null;
             this.tableAdapterManager.GV_HOTENTableAdapter = null;
@@ -545,6 +547,26 @@
             this.pcGVDK.Size = new System.Drawing.Size(1857, 485);
             this.pcGVDK.TabIndex = 11;
             // 
+            // cmbTrinhDo
+            // 
+            this.cmbTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsTBTrinhDo, "TENTRINHDO", true));
+            this.cmbTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bds_GVDK, "TRINHDO", true));
+            this.cmbTrinhDo.DataSource = this.bdsTBTrinhDo;
+            this.cmbTrinhDo.DisplayMember = "TENTRINHDO";
+            this.cmbTrinhDo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTrinhDo.FormattingEnabled = true;
+            this.cmbTrinhDo.Location = new System.Drawing.Point(189, 146);
+            this.cmbTrinhDo.Name = "cmbTrinhDo";
+            this.cmbTrinhDo.Size = new System.Drawing.Size(317, 24);
+            this.cmbTrinhDo.TabIndex = 26;
+            this.cmbTrinhDo.ValueMember = "TRINHDO";
+            this.cmbTrinhDo.SelectedIndexChanged += new System.EventHandler(this.cmbTrinhDo_SelectedIndexChanged);
+            // 
+            // bdsTBTrinhDo
+            // 
+            this.bdsTBTrinhDo.DataMember = "TBTRINHDO";
+            this.bdsTBTrinhDo.DataSource = this.DS_TN_CSDLPT;
+            // 
             // txtTrinhDo
             // 
             this.txtTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bds_GVDK, "TRINHDO", true));
@@ -613,6 +635,7 @@
             // txtMALOP
             // 
             this.txtMALOP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bds_GVDK, "MALOP", true));
+            this.txtMALOP.Enabled = false;
             this.txtMALOP.Location = new System.Drawing.Point(1639, 48);
             this.txtMALOP.Name = "txtMALOP";
             this.txtMALOP.Size = new System.Drawing.Size(100, 23);
@@ -641,6 +664,7 @@
             // txtMAMH
             // 
             this.txtMAMH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bds_GVDK, "MAMH", true));
+            this.txtMAMH.Enabled = false;
             this.txtMAMH.Location = new System.Drawing.Point(1096, 48);
             this.txtMAMH.Name = "txtMAMH";
             this.txtMAMH.Size = new System.Drawing.Size(100, 23);
@@ -649,6 +673,7 @@
             // txtMAGV
             // 
             this.txtMAGV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bds_GVDK, "MAGV", true));
+            this.txtMAGV.Enabled = false;
             this.txtMAGV.Location = new System.Drawing.Point(512, 48);
             this.txtMAGV.Name = "txtMAGV";
             this.txtMAGV.Size = new System.Drawing.Size(100, 23);
@@ -706,29 +731,9 @@
             // 
             this.LOPTableAdapter.ClearBeforeFill = true;
             // 
-            // bdsTBTrinhDo
-            // 
-            this.bdsTBTrinhDo.DataMember = "TBTRINHDO";
-            this.bdsTBTrinhDo.DataSource = this.DS_TN_CSDLPT;
-            // 
             // TBTRINHDOTableAdapter
             // 
             this.TBTRINHDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // cmbTrinhDo
-            // 
-            this.cmbTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsTBTrinhDo, "TENTRINHDO", true));
-            this.cmbTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bds_GVDK, "TRINHDO", true));
-            this.cmbTrinhDo.DataSource = this.bdsTBTrinhDo;
-            this.cmbTrinhDo.DisplayMember = "TENTRINHDO";
-            this.cmbTrinhDo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTrinhDo.FormattingEnabled = true;
-            this.cmbTrinhDo.Location = new System.Drawing.Point(189, 146);
-            this.cmbTrinhDo.Name = "cmbTrinhDo";
-            this.cmbTrinhDo.Size = new System.Drawing.Size(317, 24);
-            this.cmbTrinhDo.TabIndex = 26;
-            this.cmbTrinhDo.ValueMember = "TRINHDO";
-            this.cmbTrinhDo.SelectedIndexChanged += new System.EventHandler(this.cmbTrinhDo_SelectedIndexChanged);
             // 
             // formGVDK
             // 
@@ -760,12 +765,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcGVDK)).EndInit();
             this.pcGVDK.ResumeLayout(false);
             this.pcGVDK.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsTBTrinhDo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayThi.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayThi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGV_HOTEN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsTBTrinhDo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

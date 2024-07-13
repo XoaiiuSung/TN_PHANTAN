@@ -40,32 +40,39 @@ namespace TN_PHANTAN
             lbDiem.Text = Program.myReader[6].ToString();
 
             string mabangdiem = Program.myReader[5].ToString();
+            MessageBox.Show(sinhvien);
+            MessageBox.Show(mabangdiem);
 
-            string connectionString = Program.connstr;
+            int mabd = int.Parse(mabangdiem);
 
             
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SP_TT_BAITHI", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+            //string connectionString = Program.connstr;
 
-                    command.Parameters.AddWithValue("@MABD", mabangdiem); 
+            
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+
+            //    using (SqlCommand command = new SqlCommand("SP_TT_BAITHI", connection))
+            //    {
+            //        command.CommandType = CommandType.StoredProcedure;
+
+            //        command.Parameters.AddWithValue("@MABD", mabd); 
                     
 
-                    int rowsAffected = command.ExecuteNonQuery();
+            //        int rowsAffected = command.ExecuteNonQuery();
 
-                    Console.WriteLine($"Số lượng bản ghi bị ảnh hưởng: {rowsAffected}");
-                }
-                connection.Close();
-            }
+            //        Console.WriteLine($"Số lượng bản ghi bị ảnh hưởng: {rowsAffected}");
+            //    }
+            //    connection.Close();
+            //}
 
             Program.myReader.Close();
             Program.conn.Close();
 
             this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
+            this.sqlDataSource1.Queries[0].Parameters[0].Value = mabd;
             this.sqlDataSource1.Fill();
 
         }
